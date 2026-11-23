@@ -48,7 +48,7 @@ See [docs/FINDINGS.md](docs/FINDINGS.md) for the full audit.
 
 ### How refresh works
 
-`refresh.ps1` runs `refresh.py`, which:
+`refresh.py` does the following:
 
 1. copies the QuestieTrace SavedVariables from the WoW folder (read-only access) and archives new sessions
    in `archive/sessions/`;
@@ -62,9 +62,17 @@ See [docs/FINDINGS.md](docs/FINDINGS.md) for the full audit.
 Run it after every play session and after every Questie / QuestieDB update. `archive/sessions/` is the only
 long-term copy of your recordings; never delete it.
 
+### Never losing a session
+
+QuestieTrace keeps only 10 sessions per character and prunes the oldest every time the game saves (each
+`/reload`, logout and exit). `refresh.py --archive-only` copies new sessions into `archive/sessions/` and does
+nothing else; it is fast, idempotent and deduplicated. Run it from a file watcher on
+`WTF/Account/**/SavedVariables/QuestieTrace.lua` (or any scheduler) so every save is archived before it can
+be pruned.
+
 ### Requirements
 
-- Python 3.12 and Node 24. `refresh.ps1` creates `.venv` and installs `lupa` on first run.
+- Python 3.12 and Node 24. First run: `python -m venv .venv`, then `.venv\Scripts\python.exe -m pip install lupa`.
 - The extractor is vendored from QuestieTrace:
 
   ```
@@ -80,15 +88,14 @@ long-term copy of your recordings; never delete it.
 ### Commands
 
 ```
-.\refresh.ps1 [--install] [--wh-offline] [--no-wh] [--no-extract] [--wow <path>] [--verbose]
+.venv\Scripts\python.exe -I refresh.py [--install] [--archive-only] [--wh-offline] [--no-wh] [--no-extract] [--wow <path>] [--verbose]
 ```
 
 - `--install` copies the addon into the game's AddOns folder.
 - `--wh-offline` uses only cached Wowhead tooltips; `--no-wh` skips Wowhead and the audit entirely.
 - `--no-extract` reuses the last extractor output.
 - `--wow <path>` points at `<WoW>\_forever_` if it is not in the default location.
-- If PowerShell blocks the script: `powershell -ExecutionPolicy Bypass -File .\refresh.ps1`, or call
-  `.\.venv\Scripts\python.exe -I refresh.py` directly.
+- `--archive-only` only archives new QuestieTrace sessions (see "Never losing a session").
 - Verify the generated addon: `.\.venv\Scripts\python.exe -I tools\verify_lua.py`.
 - Audits on their own: `python -I tools\zone_audit.py [--offline]`.
 

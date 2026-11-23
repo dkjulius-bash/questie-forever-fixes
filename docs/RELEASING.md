@@ -37,7 +37,7 @@ unverified.
 
 ## Release routine
 
-1. Run `refresh.ps1`; review `work/report.txt`.
+1. Run `refresh.py`; review `work/report.txt`.
 2. Update `CHANGELOG.md` with a real entry. CurseForge's Fair Play rules ban trivial or fake updates, so
    batch data refreshes into meaningful releases.
 3. Bump `## Version` in `addon/QuestieForeverFixes/QuestieForeverFixes.toc`.

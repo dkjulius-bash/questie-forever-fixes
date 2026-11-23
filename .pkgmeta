@@ -17,7 +17,6 @@ ignore:
   - work
   - dist
   - .github
-  - refresh.ps1
   - refresh.py
   - README.md
   - CHANGELOG.md

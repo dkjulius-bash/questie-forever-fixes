@@ -4,3 +4,4 @@ work/
 archive/
 __pycache__/
 dist/
+*.whl

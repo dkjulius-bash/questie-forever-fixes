@@ -219,6 +219,7 @@ def main():
     ap.add_argument("--wow", default=r"C:\Program Files (x86)\World of Warcraft\_forever_")
     ap.add_argument("--no-extract", action="store_true", help="reuse the last extractor output")
     ap.add_argument("--verbose", action="store_true")
+    ap.add_argument("--install", action="store_true", help="copy addon/QuestieForeverFixes into the game's AddOns folder")
     ap.add_argument("--no-wh", action="store_true", help="skip the Wowhead tooltip source and the zone audit")
     ap.add_argument("--wh-offline", action="store_true", help="use only the cached Wowhead tooltips (no network)")
     ap.add_argument("--wh-refresh-days", type=float, default=30, help="refetch cached tooltips older than this (default 30)")
@@ -296,6 +297,12 @@ def main():
         f.write(text)
     print(text)
     print("Summary: " + ", ".join("%s=%d" % (k, len(patch[k])) for k in KINDS) + " patched entities; sessions=%d characters=%d" % (meta["sessionCount"], meta["characters"]))
+    if args.install:
+        import shutil
+        src = os.path.join(os.path.dirname(os.path.abspath(__file__)), "addon", "QuestieForeverFixes")
+        dst = os.path.join(addons, "QuestieForeverFixes")
+        shutil.copytree(src, dst, dirs_exist_ok=True)
+        print("Installed to " + dst + " (new install: restart the game; update: /reload)")
 
 
 if __name__ == "__main__":

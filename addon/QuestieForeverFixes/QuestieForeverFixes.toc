@@ -1,7 +1,7 @@
 ## Interface: 16001
-## Title: Questie Forever Fixes (local)
-## Notes: Local Questie database corrections generated from your own QuestieTrace recordings.
-## Author: local
+## Title: Questie Forever Fixes
+## Notes: Fills gaps in Questie's WoW Forever database (spawns, objective sources) via QuestieDB's correction API.
+## Author: dkjulius-bash
 ## Version: 0.1.0
 ## Dependencies: Questie, QuestieDB
 ## SavedVariables: QuestieForeverFixesDB

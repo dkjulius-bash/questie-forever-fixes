@@ -3,3 +3,4 @@ vendor/
 work/
 archive/
 __pycache__/
+dist/

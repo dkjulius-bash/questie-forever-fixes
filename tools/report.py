@@ -45,7 +45,7 @@ def rg_quests(db):
     return by_zone, by_spawn
 
 
-def build_report(patch, reasons, extracted, db, meta):
+def build_report(patch, reasons, extracted, db, meta, sources=None):
     L = []
     P = L.append
     P("QuestieForeverFixes patch report")
@@ -64,6 +64,20 @@ def build_report(patch, reasons, extracted, db, meta):
     invalid = sum(n for (k, f, r), n in cnt.items() if r == "invalid-dropped")
     P("  invalid fields dropped: %d" % invalid)
     P("")
+
+    if sources is not None:
+        P("Patch rows by source")
+        for kind in ("Quest", "Npc", "Object", "Item"):
+            c = Counter(sources[kind].values())
+            P("  %-7s trace=%-5d wh-tooltip=%-5d trace+wh-tooltip=%d" % (
+                kind, c["trace"], c["wh-tooltip"], c["trace+wh-tooltip"]))
+        whr = Counter((k, f, r) for k, _, f, r in reasons if r.startswith("wh-"))
+        P("  wh-tooltip reasons per field:")
+        for (k, f, r), n in sorted(whr.items()):
+            P("    %-7s %-10s %-16s %d" % (k, f, r, n))
+        if not whr:
+            P("    (none)")
+        P("")
 
     # ---- Riverglades
     by_zone, by_spawn = rg_quests(db)

@@ -297,6 +297,68 @@ def scenario_f(data):
         check(f"{p.name}: compiles", fn is not None, str(err))
 
 
+SRC_RE = re.compile(r"-- src: (trace\+wh-tooltip|trace|wh-tooltip)\s*$")
+ROW_RE = re.compile(r"^\s+\[\d+\] = \{")
+
+
+def _num(v):
+    return isinstance(v, (int, float)) and not isinstance(v, bool)
+
+
+def scenario_g(data):
+    print("[g] row source comments")
+    lines = [l for l in Path(data).read_text(encoding="utf-8").splitlines() if ROW_RE.match(l)]
+    bad = [l[:80] for l in lines if not SRC_RE.search(l)]
+    check("every row line carries a -- src comment (%d rows)" % len(lines), lines and not bad, str(bad[:3]))
+
+
+def scenario_h(data):
+    print("[h] spawns shape")
+    s = Scenario(data)
+    d = s.ns.data()
+    bad = []
+    n = 0
+    for dt in ("Npc", "Object"):
+        rows = d[dt]
+        if rows is None:
+            continue
+        for eid, row in rows.items():
+            sp = row["spawns"]
+            if sp is None:
+                continue
+            n += 1
+            ok = True
+            for z, pts in sp.items():
+                if not (_num(z) and z >= 1 and z == int(z)): ok = False; break
+                items = list(pts.values()) if pts is not None else []
+                if not items: ok = False; break
+                for pt in items:
+                    x, y = pt[1], pt[2]
+                    if not (_num(x) and _num(y)): ok = False; break
+                    if not ((0 <= x <= 100 and 0 <= y <= 100) or (x == -1 and y == -1)): ok = False; break
+                    if pt[3] is not None and not _num(pt[3]): ok = False; break
+                if not ok: break
+            if not ok:
+                bad.append("%s[%s]" % (dt, eid))
+    check("all spawns values well-formed (%d checked)" % n, not bad, str(bad[:5]))
+
+
+def scenario_i(data):
+    print("[i] meta.sources vs comments")
+    text = Path(data).read_text(encoding="utf-8")
+    cnt = {"trace": 0, "wh-tooltip": 0, "trace+wh-tooltip": 0}
+    for l in text.splitlines():
+        if ROW_RE.match(l):
+            m = SRC_RE.search(l)
+            if m: cnt[m.group(1)] += 1
+    s = Scenario(data)
+    src = s.ns.meta.sources
+    check("meta.sources present", src is not None)
+    if src is not None:
+        got = {"trace": src.trace, "wh-tooltip": src.wh, "trace+wh-tooltip": src.both}
+        check("meta.sources == comment counts", got == cnt, "%s vs %s" % (got, cnt))
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data")
@@ -304,7 +366,12 @@ def main():
     default = ADDON / "Data.lua"
     data = Path(a.data) if a.data else (default if default.exists() else FIXTURE)
     print(f"data: {data}")
-    for fn in (scenario_a, scenario_b, scenario_c, scenario_d, scenario_e, scenario_f):
+    fns = [scenario_a, scenario_b, scenario_c, scenario_d, scenario_e, scenario_f]
+    if Path(data) == default:
+        fns += [scenario_g, scenario_h, scenario_i]
+    else:
+        print("(fixture data: scenarios g/h/i skipped)")
+    for fn in fns:
         try:
             fn(data)
         except Exception as e:

@@ -1,0 +1,33 @@
+# BigWigsMods/packager v2 config.
+# The packager needs the addon's .toc at the checkout root. The addon source lives in
+# addon/QuestieForeverFixes/, so the release workflow copies those files to the root first
+# (CI only, never committed). Everything else in the repo is ignored here.
+package-as: QuestieForeverFixes
+
+ignore:
+  - addon
+  - tools
+  - extract
+  - data
+  - docs
+  - curseforge
+  - assets
+  - archive
+  - vendor
+  - work
+  - dist
+  - .github
+  - refresh.ps1
+  - refresh.py
+  - README.md
+  - CHANGELOG.md
+  - LICENSE
+
+manual-changelog:
+  filename: CHANGELOG.md
+  markup-type: markdown
+
+# Questie's CurseForge slug is "questie".
+# TODO: verify the QuestieDB slug on CurseForge (if it is a separate project) and add it here.
+required-dependencies:
+  - questie

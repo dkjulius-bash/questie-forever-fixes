@@ -1,0 +1,26 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Stage addon files at the checkout root (packager needs the .toc there)
+        run: cp addon/QuestieForeverFixes/* .
+      - name: Package and upload
+        uses: BigWigsMods/packager@v2
+        env:
+          # Newer packager docs name CF_API_TOKEN, older versions CF_API_KEY; provide both.
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          CF_API_TOKEN: ${{ secrets.CF_API_KEY }}
+          GITHUB_OAUTH: ${{ secrets.GITHUB_TOKEN }}

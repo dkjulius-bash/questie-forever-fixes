@@ -5,6 +5,7 @@
 ## Version: 0.1.0
 ## Dependencies: Questie, QuestieDB
 ## SavedVariables: QuestieForeverFixesDB
+## IconTexture: Interface\AddOns\QuestieForeverFixes\icon.png
 
 Data.lua
 Core.lua

@@ -114,10 +114,7 @@ Only differences from the installed DB are kept:
 
 ### Release steps
 
-1. Run `refresh.ps1` and `verify_lua.py`; review `work/report.txt`.
-2. Bump `## Version` in `addon/QuestieForeverFixes/QuestieForeverFixes.toc` and add a CHANGELOG entry.
-3. Run `python tools/package.py`; it writes `dist/QuestieForeverFixes-<version>.zip`.
-4. Commit, tag, and attach the zip to a GitHub release.
+See [docs/RELEASING.md](docs/RELEASING.md). Releases are built and uploaded by tagging `vX.Y.Z`.
 
 ## Credits
 

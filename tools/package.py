@@ -6,7 +6,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 ADDON = ROOT / "addon" / "QuestieForeverFixes"
 NAME = "QuestieForeverFixes"
-FILES = [f"{NAME}.toc", "Core.lua", "Data.lua"]
+FILES = [f"{NAME}.toc", "Core.lua", "Data.lua", "icon.png"]
 
 
 def main():

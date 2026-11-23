@@ -5,5 +5,3 @@ archive/
 __pycache__/
 dist/
 *.whl
-# Local-only PowerShell helpers (refresh wrapper, archive watcher) stay out of the public repo.
-*.ps1

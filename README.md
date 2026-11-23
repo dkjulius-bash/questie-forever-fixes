@@ -66,13 +66,16 @@ long-term copy of your recordings; never delete it.
 
 QuestieTrace keeps only 10 sessions per character and prunes the oldest every time the game saves (each
 `/reload`, logout and exit). `refresh.py --archive-only` copies new sessions into `archive/sessions/` and does
-nothing else; it is fast, idempotent and deduplicated. Run it from a file watcher on
-`WTF/Account/**/SavedVariables/QuestieTrace.lua` (or any scheduler) so every save is archived before it can
-be pruned.
+nothing else; it is fast, idempotent and deduplicated.
+
+On Windows, `tools\archive-watch.ps1` runs it every time the game saves QuestieTrace's file.
+`.\tools\install-archive-watch.ps1` registers that watcher as a hidden scheduled task at logon and starts it
+(`-Uninstall` removes it; `-Wow <path>` if the game is elsewhere). Its log is `work\archive-watch.log`.
 
 ### Requirements
 
-- Python 3.12 and Node 24. First run: `python -m venv .venv`, then `.venv\Scripts\python.exe -m pip install lupa`.
+- Python 3.12 and Node 24. `.\refresh.ps1` creates `.venv` and installs `lupa` on first run (manually:
+  `python -m venv .venv`, then `.venv\Scripts\python.exe -m pip install lupa`).
 - The extractor is vendored from QuestieTrace:
 
   ```
@@ -88,7 +91,7 @@ be pruned.
 ### Commands
 
 ```
-.venv\Scripts\python.exe -I refresh.py [--install] [--archive-only] [--wh-offline] [--no-wh] [--no-extract] [--wow <path>] [--verbose]
+.\refresh.ps1 [--install] [--archive-only] [--wh-offline] [--no-wh] [--no-extract] [--wow <path>] [--verbose]
 ```
 
 - `--install` copies the addon into the game's AddOns folder.
@@ -96,6 +99,8 @@ be pruned.
 - `--no-extract` reuses the last extractor output.
 - `--wow <path>` points at `<WoW>\_forever_` if it is not in the default location.
 - `--archive-only` only archives new QuestieTrace sessions (see "Never losing a session").
+- `refresh.ps1` passes its arguments to `refresh.py`; without PowerShell, run
+  `.venv\Scripts\python.exe -I refresh.py` with the same arguments.
 - Verify the generated addon: `.\.venv\Scripts\python.exe -I tools\verify_lua.py`.
 - Audits on their own: `python -I tools\zone_audit.py [--offline]`.
 

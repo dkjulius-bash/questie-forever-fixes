@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1 – 2026-11-23
+
+- New addon icon, shown in the in-game addon list.
+- First release published to CurseForge. Releases are now built and uploaded automatically from GitHub tags.
+- No data changes since 0.1.0.
+
 ## 0.1.0 – 2026-11-23
 
 Initial release.

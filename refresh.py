@@ -222,12 +222,15 @@ def main():
     ap.add_argument("--install", action="store_true", help="copy addon/QuestieForeverFixes into the game's AddOns folder")
     ap.add_argument("--no-wh", action="store_true", help="skip the Wowhead tooltip source and the zone audit")
     ap.add_argument("--wh-offline", action="store_true", help="use only the cached Wowhead tooltips (no network)")
+    ap.add_argument("--archive-only", action="store_true", help="only copy new QuestieTrace sessions into archive/ (used by tools/archive-watch.ps1)")
     ap.add_argument("--wh-refresh-days", type=float, default=30, help="refetch cached tooltips older than this (default 30)")
     args = ap.parse_args()
 
     os.makedirs(WORK, exist_ok=True)
     found = collect_sessions(args.wow, args.verbose)
     files = archive_sessions(found)
+    if args.archive_only:
+        return
     if not files:
         die("no sessions archived; nothing to extract")
 

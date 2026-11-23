@@ -27,6 +27,10 @@ patch shrinks automatically as upstream catches up.
 .\refresh.ps1
 ```
 
+If the PowerShell execution policy blocks the script, run
+`powershell -ExecutionPolicy Bypass -File .\refresh.ps1` or call
+`.\.venv\Scripts\python.exe -I refresh.py` directly.
+
 Run it after every play session and after every Questie / QuestieDB update.
 
 IMPORTANT: QuestieTrace keeps only the newest 10 sessions per character. Refresh at least every few

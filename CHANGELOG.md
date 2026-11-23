@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.2 – 2026-11-23
+
+- Fixes the 0.1.1 download, which was an empty package. This is the first working CurseForge release.
+- The release pipeline now checks the package contents before uploading.
+- Same data and icon as 0.1.1.
+
 ## 0.1.1 – 2026-11-23
 
 - New addon icon, shown in the in-game addon list.

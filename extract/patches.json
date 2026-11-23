@@ -1,0 +1,17 @@
+[
+  {
+    "file": "extract/merge/quest/relations.ts",
+    "find": "export const MIN_GIVER_SESSIONS = 5;",
+    "replace": "export const MIN_GIVER_SESSIONS = 1;"
+  },
+  {
+    "file": "extract/merge/npc/spawns.ts",
+    "find": "const MIN_CLUSTER_SESSIONS = 2;",
+    "replace": "const MIN_CLUSTER_SESSIONS = 1;"
+  },
+  {
+    "file": "extract/aggregate.ts",
+    "find": "const NEWEST_MIN_SESSIONS = 2;",
+    "replace": "const NEWEST_MIN_SESSIONS = 1;"
+  }
+]

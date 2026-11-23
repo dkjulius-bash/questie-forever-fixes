@@ -1,0 +1,10 @@
+## Interface: 16001
+## Title: Questie Forever Fixes (local)
+## Notes: Local Questie database corrections generated from your own QuestieTrace recordings.
+## Author: local
+## Version: 0.1.0
+## Dependencies: Questie, QuestieDB
+## SavedVariables: QuestieForeverFixesDB
+
+Data.lua
+Core.lua

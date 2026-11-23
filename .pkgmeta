@@ -1,7 +1,7 @@
 # BigWigsMods/packager v2 config.
 # The packager needs the addon's .toc at the checkout root. The addon source lives in
-# addon/QuestieForeverFixes/, so the release workflow copies those files to the root first
-# (CI only, never committed). Everything else in the repo is ignored here.
+# addon/QuestieForeverFixes/, so the release workflow copies those files to the root and commits them
+# in the CI checkout only (never pushed). Everything else in the repo is ignored here.
 package-as: QuestieForeverFixes
 
 ignore:

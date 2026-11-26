@@ -2,7 +2,7 @@
 ## Title: Questie Forever Fixes
 ## Notes: Fills gaps in Questie's WoW Forever database (spawns, objective sources) via QuestieDB's correction API.
 ## Author: dkjulius-bash
-## Version: 0.1.2
+## Version: 0.1.3
 ## Dependencies: Questie, QuestieDB
 ## SavedVariables: QuestieForeverFixesDB
 ## X-Curse-Project-ID: 1826102

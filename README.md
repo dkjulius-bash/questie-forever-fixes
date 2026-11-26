@@ -18,14 +18,14 @@ Requires Questie and QuestieDB. To update, replace the folder and `/reload`. To 
 
 ## What it fixes right now
 
-Version 0.1.0, generated against Questie 12.12.0 / QuestieDB 1.1.5:
+Version 0.1.3, generated against Questie 12.15.0 / QuestieDB 1.1.6:
 
 | Type | Rows | From QuestieTrace | From Wowhead tooltips |
 |---|---|---|---|
 | Quest | 1 | 1 | 0 |
-| NPC | 29 | 15 | 14 |
-| Object | 7 | 7 | 0 |
-| Item (drop sources) | 45 | 45 | 0 |
+| NPC | 44 | 30 | 14 |
+| Object | 9 | 9 | 0 |
+| Item (drop sources) | 74 | 74 | 0 |
 
 Examples:
 

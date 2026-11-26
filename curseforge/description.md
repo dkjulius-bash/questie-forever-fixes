@@ -12,14 +12,14 @@ A small companion addon for **Questie** on **WoW Forever**. It adds and corrects
 
 ## What is fixed in this version
 
-Version 0.1.0, generated against Questie 12.12.0 / QuestieDB 1.1.5:
+Version 0.1.3, generated against Questie 12.15.0 / QuestieDB 1.1.6:
 
 | Type | Corrections |
 |---|---|
 | Quest objectives | 1 |
-| NPCs (spawns) | 29 |
-| Objects (spawns) | 7 |
-| Items (drop sources) | 45 |
+| NPCs (spawns) | 44 |
+| Objects (spawns) | 9 |
+| Items (drop sources) | 74 |
 
 Examples:
 

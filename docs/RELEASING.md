@@ -37,7 +37,8 @@ unverified.
 
 ## Release routine
 
-1. Run `refresh.py`; review `work/report.txt`.
+1. Run `refresh.py`; review `work/report.txt`. Run `tools/verify_lua.py` and `tools/test_merge.py` (both
+   with the `.venv` Python and `-I`); both must pass.
 2. Update `CHANGELOG.md` with a real entry. CurseForge's Fair Play rules ban trivial or fake updates, so
    batch data refreshes into meaningful releases.
 3. Bump `## Version` in `addon/QuestieForeverFixes/QuestieForeverFixes.toc`.

@@ -40,6 +40,10 @@ Install through your addon manager or extract the folder to `_forever_\Interface
 - `/qff` shows the addon status.
 - `/qff off` disables it, `/qff on` enables it again. Run `/reload` afterwards.
 
+## Add your own recordings
+
+If you play with QuestieTrace, you can turn your own recordings into extra fixes for your game, on top of the ones included here. A small script on your PC builds them into a separate `QuestieForeverFixes_Local` folder, so updates of this addon never overwrite them, and nothing is uploaded anywhere. You need Python, Node.js and a copy of the GitHub repository; the steps are in the guide: [Build your own local fixes](https://github.com/dkjulius-bash/questie-forever-fixes#build-your-own-local-fixes).
+
 ## How you can help
 
 - Install **QuestieTrace**, play normally, then run `/qlt export` in game and send the export to the Questie team. That is what fixes Questie for everyone.

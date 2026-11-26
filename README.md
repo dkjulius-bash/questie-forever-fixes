@@ -37,6 +37,60 @@ Examples:
 
 See [docs/FINDINGS.md](docs/FINDINGS.md) for the full audit.
 
+## Build your own local fixes
+
+You can turn your own [QuestieTrace](https://github.com/Questie/QuestieTrace) recordings into extra fixes on
+your PC, on top of the ones this addon ships. They go into a second addon folder, `QuestieForeverFixes_Local`,
+which no download or addon manager ever ships or touches, so it survives every update of Questie Forever Fixes.
+
+Privacy: the local build runs only on your PC and never uploads anything. It downloads the QuestieTrace
+extractor and its npm packages once, reads your QuestieTrace SavedVariables and writes the local addon folder.
+The generated file contains no account or character names.
+
+Requirements (Windows):
+
+- Questie Forever Fixes 0.2.0 or later, plus Questie and QuestieDB.
+- [QuestieTrace](https://github.com/Questie/QuestieTrace) installed and enabled while you play; it records
+  what you see in game.
+- [Python 3.12](https://www.python.org/downloads/) or newer (tick "Add python.exe to PATH" in the installer),
+  [Node.js 24](https://nodejs.org) LTS and [Git](https://git-scm.com).
+
+Steps:
+
+1. Download this repository (green "Code" button, "Download ZIP", then extract it), or `git clone` it.
+2. Play with QuestieTrace enabled, then log out or `/reload` so the game saves its recordings.
+3. Open PowerShell in the repository folder and run:
+
+   ```
+   .\refresh.ps1 --local --install
+   ```
+
+   The first run sets up `.venv`, downloads the QuestieTrace extractor into `vendor\` and installs its
+   packages. Add `--wow "D:\Games\World of Warcraft\_forever_"` if the game is not in the default location
+   (`C:\Program Files (x86)\World of Warcraft\_forever_`). If PowerShell refuses to run the script, run
+   `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once.
+4. Restart the game the first time (a new addon folder is not picked up by `/reload`); afterwards `/reload`
+   is enough. `/qff` shows the shipped and the local row counts.
+
+Rerun step 3 after playing more and after updating Questie or Questie Forever Fixes (`/qff` says "rebuild"
+when the local build is out of date). Only differences from the installed QuestieDB and the shipped fixes end
+up in the local folder, so it stays small. Without `--install` the folder is written to
+`work\local\QuestieForeverFixes_Local` for you to inspect. To remove your local fixes, delete
+`Interface\AddOns\QuestieForeverFixes_Local` or disable it in the addon list.
+
+Your recordings are also archived in `archive\sessions\` inside the repository folder, because QuestieTrace
+keeps only the newest 10 sessions per character. Keep that folder if you want older areas to stay covered.
+
+How local rows combine with the shipped ones:
+
+- Spawn points: per zone, every shipped point is kept and your points are added (a point within 0.5 map
+  units of one already there is skipped). New zones are added.
+- Drop sources and the other `_add` lists (`npcDrops_add`, `objectDrops_add`, quest starters and enders):
+  union.
+- Everything else (zone, name, quest objectives and other single values): the shipped value wins; yours is
+  used only where the shipped fixes have none.
+- Entities the shipped fixes do not cover are used as they are.
+
 ## Help us
 
 - Install [QuestieTrace](https://github.com/Questie/QuestieTrace), play, then run `/qlt export` and paste the
@@ -76,7 +130,8 @@ On Windows, `tools\archive-watch.ps1` runs it every time the game saves QuestieT
 
 - Python 3.12 and Node 24. `.\refresh.ps1` creates `.venv` and installs `lupa` on first run (manually:
   `python -m venv .venv`, then `.venv\Scripts\python.exe -m pip install lupa`).
-- The extractor is vendored from QuestieTrace:
+- The extractor is vendored from QuestieTrace. `.\refresh.ps1` clones it when it is missing and `refresh.py`
+  runs `npm ci` when `node_modules` is missing; manually:
 
   ```
   git clone https://github.com/Questie/QuestieTrace vendor/QuestieTrace
@@ -92,6 +147,7 @@ On Windows, `tools\archive-watch.ps1` runs it every time the game saves QuestieT
 
 ```
 .\refresh.ps1 [--install] [--archive-only] [--wh-offline] [--no-wh] [--no-extract] [--wow <path>] [--verbose]
+.\refresh.ps1 --local [--install] [--local-out <dir>] [--shipped <Data.lua>|none] [--no-extract] [--wow <path>]
 ```
 
 - `--install` copies the addon into the game's AddOns folder.
@@ -99,9 +155,17 @@ On Windows, `tools\archive-watch.ps1` runs it every time the game saves QuestieT
 - `--no-extract` reuses the last extractor output.
 - `--wow <path>` points at `<WoW>\_forever_` if it is not in the default location.
 - `--archive-only` only archives new QuestieTrace sessions (see "Never losing a session").
+- `--local` is the player mode (see "Build your own local fixes"): no Wowhead; diffed against the installed
+  QuestieDB with the shipped `Data.lua` applied on top; written to `work\local\QuestieForeverFixes_Local`
+  (`--local-out` to change) and, with `--install`, copied to `AddOns\QuestieForeverFixes_Local`.
+  `--shipped` picks the baseline (default: the installed `QuestieForeverFixes\Data.lua`, else the repo copy;
+  `none` for no baseline). It never writes `addon\`, `work\patch.json` or `work\report.txt`; its report and
+  extractor output live in `work\local\`.
 - `refresh.ps1` passes its arguments to `refresh.py`; without PowerShell, run
   `.venv\Scripts\python.exe -I refresh.py` with the same arguments.
-- Verify the generated addon: `.\.venv\Scripts\python.exe -I tools\verify_lua.py`.
+- Verify the generated addon: `.\.venv\Scripts\python.exe -I tools\verify_lua.py` (also checks a
+  LocalData.lua: `--local-data <path>`, default `tools\fixtures\LocalData.lua`). Merge unit tests:
+  `.\.venv\Scripts\python.exe -I tools\test_merge.py`.
 - Audits on their own: `python -I tools\zone_audit.py [--offline]`.
 
 ### Patch policy

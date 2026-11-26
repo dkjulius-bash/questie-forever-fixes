@@ -9,6 +9,7 @@ from lupa import lua51
 ROOT = Path(__file__).resolve().parent.parent
 ADDON = ROOT / "addon" / "QuestieForeverFixes"
 FIXTURE = ROOT / "tools" / "fixtures" / "Data.lua"
+LOCAL_FIXTURE = ROOT / "tools" / "fixtures" / "LocalData.lua"
 META_DIR = Path(r"C:\Program Files (x86)\World of Warcraft\_forever_\Interface\AddOns\QuestieDB\src\meta")
 KINDS = [("Quest", "quest"), ("Npc", "npc"), ("Object", "object"), ("Item", "item")]
 ADDON_NAME = "QuestieForeverFixes"
@@ -133,7 +134,7 @@ end
 
 
 class Scenario:
-    def __init__(self, data_path, **opts):
+    def __init__(self, data_path, local_data=None, **opts):
         self.lua = lua51.LuaRuntime(unpack_returned_tuples=True)
         assert self.lua.eval("_VERSION") == "Lua 5.1", "not Lua 5.1"
         lua = self.lua
@@ -151,6 +152,9 @@ class Scenario:
         self.load("stub", stub, o)
         self.ns = lua.table()
         lua.globals().ns_global = self.ns
+        if local_data is not None:
+            src = Path(local_data).read_text(encoding="utf-8") if isinstance(local_data, Path) else local_data
+            self.load("LocalData.lua", src)
         self.load("Data.lua", Path(data_path).read_text(encoding="utf-8"), ADDON_NAME, self.ns)
         self.load("Core.lua", (ADDON / "Core.lua").read_text(encoding="utf-8"), ADDON_NAME, self.ns)
 
@@ -312,10 +316,8 @@ def scenario_g(data):
     check("every row line carries a -- src comment (%d rows)" % len(lines), lines and not bad, str(bad[:3]))
 
 
-def scenario_h(data):
-    print("[h] spawns shape")
-    s = Scenario(data)
-    d = s.ns.data()
+def spawns_bad(d):
+    """Check spawns shape on a data() table; return (rows_checked, [bad row labels])."""
     bad = []
     n = 0
     for dt in ("Npc", "Object"):
@@ -340,6 +342,13 @@ def scenario_h(data):
                 if not ok: break
             if not ok:
                 bad.append("%s[%s]" % (dt, eid))
+    return n, bad
+
+
+def scenario_h(data):
+    print("[h] spawns shape")
+    s = Scenario(data)
+    n, bad = spawns_bad(s.ns.data())
     check("all spawns values well-formed (%d checked)" % n, not bad, str(bad[:5]))
 
 
@@ -359,9 +368,53 @@ def scenario_i(data):
         check("meta.sources == comment counts", got == cnt, "%s vs %s" % (got, cnt))
 
 
+def lua_ids(tbl):
+    out = {}
+    for dt, _ in KINDS:
+        rows = tbl[dt]
+        out[dt] = set(rows.keys()) if rows is not None else set()
+    return out
+
+
+def scenario_j(data, local_path):
+    print("[j] local data")
+    local_path = Path(local_path)
+    text = local_path.read_text(encoding="utf-8")
+    check("LocalData: no goto", re.search(r"\bgoto\b", text) is None)
+    check("LocalData: no //", "//" not in text)
+    lua = lua51.LuaRuntime(unpack_returned_tuples=True)
+    res = lua.eval("loadstring")(text, "@" + local_path.name)
+    fn, err = res if isinstance(res, tuple) else (res, None)
+    check("LocalData: compiles", fn is not None, str(err))
+    if fn is None:
+        return
+    fn()
+    g = lua.globals().QuestieForeverFixes_LocalData
+    check("defines table QuestieForeverFixes_LocalData with meta table and data function",
+          g is not None and lua.eval("type")(g.meta) == "table" and lua.eval("type")(g.data) == "function")
+    d = g.data()
+    counts = {dt: len(list(d[dt].keys())) for dt, _ in KINDS}
+    meta_counts = {str(k): v for k, v in g.meta.counts.items()}
+    check("meta.counts == data() row counts", counts == meta_counts, f"{counts} vs {meta_counts}")
+    rows = [l for l in text.splitlines() if ROW_RE.match(l)]
+    bad = [l[:60] for l in rows if "-- src:" not in l]
+    check("every row line carries a -- src: comment (%d rows)" % len(rows), rows and not bad, str(bad[:3]))
+    n, badsp = spawns_bad(d)
+    check("local spawns well-formed (%d checked)" % n, not badsp, str(badsp[:5]))
+    s = Scenario(data, local_data=local_path)
+    s.fire()
+    check("no lines printed at load", s.out() == [], str(s.out()))
+    sh_ids, lo_ids = lua_ids(s.ns.data()), lua_ids(d)
+    union = {dt: len(sh_ids[dt] | lo_ids[dt]) for dt, _ in KINDS}
+    expect = {k: v for k, v in union.items() if v > 0}
+    check("every non-empty kind registered", sorted(r[1] for r in s.registry()) == sorted(expect), str(s.registry()))
+    check("applied counts == union of shipped and local ids", s.applied() == expect, f"{s.applied()} vs {expect}")
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data")
+    ap.add_argument("--local-data", default=str(LOCAL_FIXTURE))
     a = ap.parse_args()
     default = ADDON / "Data.lua"
     data = Path(a.data) if a.data else (default if default.exists() else FIXTURE)
@@ -376,6 +429,10 @@ def main():
             fn(data)
         except Exception as e:
             check(f"{fn.__name__} raised", False, repr(e))
+    try:
+        scenario_j(data, a.local_data)
+    except Exception as e:
+        check("scenario_j raised", False, repr(e))
     print(f"\n{sum(results)}/{len(results)} checks passed")
     sys.exit(0 if all(results) else 1)
 

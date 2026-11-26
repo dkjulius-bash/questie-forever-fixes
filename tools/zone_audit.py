@@ -351,16 +351,20 @@ def _norm_pts(pts):
     return [(round(p[0], 4), round(p[1], 4)) for p in pts]
 
 
-def wh_patch(db, zones, wh, trace_patch, extra_entities=None):
+def wh_patch(db, zones, wh, trace_patch, extra_entities=None, coll=None, zones_main=None):
     """-> (rows {"Npc": {id: {field: v}}, "Object": {...}}, reasons [(kind, id, field, reason)], info {(kind,id): {...}}).
 
     extra_entities: optional iterable of (kind, id); for these any outdoor zone (tooltip zone with a uiMap) is allowed
     and the key AreaID is the one existing DB spawns already use for that uiMap, else the tooltip zone id.
+    coll / zones_main: optional precomputed collect() result and {zone name: main AreaID} (all-zones audit);
+    defaults keep the 6-zone behaviour.
     """
     a2u = Z._A2U
     transforms = Z._TRANSFORMS
-    coll = collect(db, zones)
-    umaps = {a2u.get(m): n for n, m in Z.ZONES.items()}
+    if coll is None:
+        coll = collect(db, zones)
+    zmain = Z.ZONES if zones_main is None else zones_main
+    umaps = {a2u.get(m): n for n, m in zmain.items()}
     qrefs = defaultdict(set)
     for qd in coll.values():
         for q, info in qd.items():
@@ -396,7 +400,7 @@ def wh_patch(db, zones, wh, trace_patch, extra_entities=None):
             existing = sorted(a for a in group if dbsp.get(a))
             main = existing[0] if existing else wz
         else:
-            main = Z.ZONES[umaps[u]]
+            main = zmain[umaps[u]]
         qpts = [p for a, pts in S.items() if a in group for p in pts if not is_sentinel(p)]
         dist = min((math.dist(a, p[:2]) for a in wp for p in qpts), default=None)
         newpts = [list(p) for p in wp]
@@ -561,7 +565,15 @@ def init_env(qdb_dir=QDB_DIR):
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--offline", action="store_true")
+    ap.add_argument("--all-zones", action="store_true", help="standalone read-only audit of every zone / both factions")
+    ap.add_argument("--faction", choices=("both", "alliance", "horde"), default="both")
+    ap.add_argument("--outdir", default=None)
+    ap.add_argument("--dry-count", action="store_true", help="--all-zones: only count uncached tooltips and exit")
     args = ap.parse_args()
+    if args.all_zones:
+        import zone_audit_all
+        zone_audit_all.main(args)
+        return
     init_env()
     db = InstalledDB(QDB_DIR)
     wh = wh_tooltip.WH(os.path.join(WORK, "wh"), offline=args.offline)

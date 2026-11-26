@@ -18,14 +18,14 @@ Requires Questie and QuestieDB. To update, replace the folder and `/reload`. To 
 
 ## What it fixes right now
 
-Version 0.1.3, generated against Questie 12.15.0 / QuestieDB 1.1.6:
+Version 0.2.0, generated against Questie 12.15.0 / QuestieDB 1.1.6:
 
 | Type | Rows | From QuestieTrace | From Wowhead tooltips |
 |---|---|---|---|
 | Quest | 1 | 1 | 0 |
-| NPC | 44 | 30 | 14 |
-| Object | 9 | 9 | 0 |
-| Item (drop sources) | 74 | 74 | 0 |
+| NPC | 49 | 35 | 14 |
+| Object | 11 | 11 | 0 |
+| Item (drop sources) | 80 | 80 | 0 |
 
 Examples:
 
@@ -68,7 +68,9 @@ Steps:
    The first run sets up `.venv`, downloads the QuestieTrace extractor into `vendor\` and installs its
    packages. Add `--wow "D:\Games\World of Warcraft\_forever_"` if the game is not in the default location
    (`C:\Program Files (x86)\World of Warcraft\_forever_`). If PowerShell refuses to run the script, run
-   `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once.
+   `Set-ExecutionPolicy -Scope CurrentUser RemoteSigned` once. If you used "Download ZIP", also run
+   `Get-ChildItem -Recurse *.ps1 | Unblock-File` in the folder once: Windows marks downloaded scripts as
+   coming from the internet, and `RemoteSigned` blocks those.
 4. Restart the game the first time (a new addon folder is not picked up by `/reload`); afterwards `/reload`
    is enough. `/qff` shows the shipped and the local row counts.
 

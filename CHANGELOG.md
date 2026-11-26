@@ -1,7 +1,8 @@
 # Changelog
 
-## Unreleased
+## 0.2.0 – 2026-11-26
 
+- Data regenerated from 41 recorded sessions (was 39): 1 quest, 49 NPC, 11 object and 80 item corrections (was 1 / 44 / 9 / 74).
 - Build your own local fixes: `refresh.ps1 --local --install` turns your own QuestieTrace recordings into a separate `QuestieForeverFixes_Local` addon folder that addon updates never touch. It contains only what the installed QuestieDB and the shipped fixes do not already cover, and nothing is uploaded. See "Build your own local fixes" in the README.
 - The addon merges local rows onto the shipped ones at load time: spawn points per zone and drop-source lists are combined, shipped spawn points are never removed, and for single values (zone, name, quest objectives) the shipped value wins.
 - `/qff` now shows the shipped and the local row counts, the local build date and a hint when the local build should be rebuilt.

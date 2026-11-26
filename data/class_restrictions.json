@@ -1,0 +1,923 @@
+{
+ "_comment": "requiredClasses for WoW Forever's re-issued Tier 0.5 quests that QuestieDB leaves class-less. Built by tools/class_restrictions.py; refresh.py applies an entry only where QuestieDB has no requiredClasses.",
+ "source": {
+  "itemSet": "wago.tools DB2 ItemSet, product wowf (work/db2/ItemSet.csv)",
+  "allowableClass": "not available: the wowf ItemSparse table lacks these items and Dungeon Set items carry no class restriction",
+  "classKeywords": {
+   "Magister": "Mage",
+   "Devout": "Priest",
+   "Dreadmist": "Warlock",
+   "Shadowcraft": "Rogue",
+   "Beaststalker": "Hunter",
+   "Elements": "Shaman",
+   "Lightforge": "Paladin",
+   "Valor": "Warrior",
+   "Wildheart": "Druid"
+  },
+  "classMasks": {
+   "Warrior": 1,
+   "Paladin": 2,
+   "Hunter": 4,
+   "Rogue": 8,
+   "Priest": 16,
+   "Shaman": 64,
+   "Mage": 128,
+   "Warlock": 256,
+   "Druid": 1024
+  },
+  "chains": [
+   "An Earnest Proposition",
+   "Anthion's Parting Words",
+   "Just Compensation",
+   "Saving the Best for Last"
+  ],
+  "generated": "2026-11-26"
+ },
+ "quests": {
+  "84148": {
+   "name": "An Earnest Proposition",
+   "faction": "Alliance",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 186 'Beaststalker Armor': items 16681",
+   "corroboratedBy": [
+    8906
+   ],
+   "inQuestieDB": true
+  },
+  "84149": {
+   "name": "An Earnest Proposition",
+   "faction": "Alliance",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16683",
+   "corroboratedBy": [
+    8907
+   ],
+   "inQuestieDB": true
+  },
+  "84151": {
+   "name": "An Earnest Proposition",
+   "faction": "Alliance",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16697",
+   "corroboratedBy": [
+    8909
+   ],
+   "inQuestieDB": true
+  },
+  "84152": {
+   "name": "An Earnest Proposition",
+   "faction": "Alliance",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16710",
+   "corroboratedBy": [
+    8910
+   ],
+   "inQuestieDB": true
+  },
+  "84153": {
+   "name": "An Earnest Proposition",
+   "faction": "Alliance",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16703",
+   "corroboratedBy": [
+    8911
+   ],
+   "inQuestieDB": true
+  },
+  "84154": {
+   "name": "An Earnest Proposition",
+   "faction": "Alliance",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16735",
+   "corroboratedBy": [
+    8912
+   ],
+   "inQuestieDB": true
+  },
+  "84155": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Druid",
+   "requiredClasses": 1024,
+   "method": "itemset",
+   "evidence": "ItemSet 185 'Wildheart Raiment': items 16714",
+   "corroboratedBy": [
+    8913
+   ],
+   "inQuestieDB": true
+  },
+  "84156": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 186 'Beaststalker Armor': items 16681",
+   "corroboratedBy": [
+    8914
+   ],
+   "inQuestieDB": true
+  },
+  "84157": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16683",
+   "corroboratedBy": [
+    8915
+   ],
+   "inQuestieDB": true
+  },
+  "84158": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16697",
+   "corroboratedBy": [
+    8916
+   ],
+   "inQuestieDB": true
+  },
+  "84159": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16710",
+   "corroboratedBy": [
+    8917
+   ],
+   "inQuestieDB": true
+  },
+  "84160": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16671",
+   "corroboratedBy": [
+    8918
+   ],
+   "inQuestieDB": true
+  },
+  "84161": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16703",
+   "corroboratedBy": [
+    8919
+   ],
+   "inQuestieDB": true
+  },
+  "84162": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16735",
+   "corroboratedBy": [
+    8920
+   ],
+   "inQuestieDB": true
+  },
+  "84163": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Druid",
+   "requiredClasses": 1024,
+   "method": "itemset",
+   "evidence": "ItemSet 185 'Wildheart Raiment': items 16716, 16717",
+   "corroboratedBy": [
+    8926,
+    8927
+   ],
+   "inQuestieDB": true
+  },
+  "84164": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 186 'Beaststalker Armor': items 16676, 16680",
+   "corroboratedBy": [
+    8931,
+    8938
+   ],
+   "inQuestieDB": true
+  },
+  "84165": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16684, 16685",
+   "corroboratedBy": [
+    8932,
+    8939
+   ],
+   "inQuestieDB": true
+  },
+  "84166": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Paladin",
+   "requiredClasses": 2,
+   "method": "itemset",
+   "evidence": "ItemSet 188 'Lightforge Armor': items 16723, 16724",
+   "corroboratedBy": [
+    8933
+   ],
+   "inQuestieDB": true
+  },
+  "84167": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16692, 16696",
+   "corroboratedBy": [
+    8934,
+    8940
+   ],
+   "inQuestieDB": true
+  },
+  "84168": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16712, 16713",
+   "corroboratedBy": [
+    8935,
+    8941
+   ],
+   "inQuestieDB": true
+  },
+  "84169": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16702, 16705",
+   "corroboratedBy": [
+    8936,
+    8943
+   ],
+   "inQuestieDB": true
+  },
+  "84170": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16736, 16737",
+   "corroboratedBy": [
+    8937,
+    8944
+   ],
+   "inQuestieDB": true
+  },
+  "84171": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Druid",
+   "requiredClasses": 1024,
+   "method": "itemset",
+   "evidence": "ItemSet 185 'Wildheart Raiment': items 16716, 16717",
+   "corroboratedBy": [
+    8926,
+    8927
+   ],
+   "inQuestieDB": true
+  },
+  "84172": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 186 'Beaststalker Armor': items 16676, 16680",
+   "corroboratedBy": [
+    8931,
+    8938
+   ],
+   "inQuestieDB": true
+  },
+  "84173": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16684, 16685",
+   "corroboratedBy": [
+    8932,
+    8939
+   ],
+   "inQuestieDB": true
+  },
+  "84174": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16692, 16696",
+   "corroboratedBy": [
+    8934,
+    8940
+   ],
+   "inQuestieDB": true
+  },
+  "84175": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16712, 16713",
+   "corroboratedBy": [
+    8935,
+    8941
+   ],
+   "inQuestieDB": true
+  },
+  "84176": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16672, 16673",
+   "corroboratedBy": [
+    8942
+   ],
+   "inQuestieDB": true
+  },
+  "84177": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16702, 16705",
+   "corroboratedBy": [
+    8936,
+    8943
+   ],
+   "inQuestieDB": true
+  },
+  "84178": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16736, 16737",
+   "corroboratedBy": [
+    8937,
+    8944
+   ],
+   "inQuestieDB": true
+  },
+  "84179": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Druid",
+   "requiredClasses": 1024,
+   "method": "itemset",
+   "evidence": "ItemSet 185 'Wildheart Raiment': items 16715, 16718, 16719",
+   "corroboratedBy": [
+    8951,
+    9016
+   ],
+   "inQuestieDB": true
+  },
+  "84180": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 186 'Beaststalker Armor': items 16675, 16678, 16679",
+   "corroboratedBy": [
+    8952,
+    9017
+   ],
+   "inQuestieDB": true
+  },
+  "84181": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16682, 16687, 16689",
+   "corroboratedBy": [
+    8953,
+    9018
+   ],
+   "inQuestieDB": true
+  },
+  "84182": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Paladin",
+   "requiredClasses": 2,
+   "method": "itemset",
+   "evidence": "ItemSet 188 'Lightforge Armor': items 16725, 16728, 16729",
+   "corroboratedBy": [
+    8954
+   ],
+   "inQuestieDB": true
+  },
+  "84183": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16691, 16694, 16695",
+   "corroboratedBy": [
+    8955,
+    9019
+   ],
+   "inQuestieDB": true
+  },
+  "84184": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16708, 16709, 16711",
+   "corroboratedBy": [
+    8956,
+    9020
+   ],
+   "inQuestieDB": true
+  },
+  "84185": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16699, 16701, 16704",
+   "corroboratedBy": [
+    8958,
+    9021
+   ],
+   "inQuestieDB": false
+  },
+  "84186": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16732, 16733, 16734",
+   "corroboratedBy": [
+    8959,
+    9022
+   ],
+   "inQuestieDB": true
+  },
+  "84187": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Druid",
+   "requiredClasses": 1024,
+   "method": "itemset",
+   "evidence": "ItemSet 185 'Wildheart Raiment': items 16715, 16718, 16719",
+   "corroboratedBy": [
+    8951,
+    9016
+   ],
+   "inQuestieDB": true
+  },
+  "84188": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 186 'Beaststalker Armor': items 16675, 16678, 16679",
+   "corroboratedBy": [
+    8952,
+    9017
+   ],
+   "inQuestieDB": true
+  },
+  "84189": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16682, 16687, 16689",
+   "corroboratedBy": [
+    8953,
+    9018
+   ],
+   "inQuestieDB": true
+  },
+  "84190": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16691, 16694, 16695",
+   "corroboratedBy": [
+    8955,
+    9019
+   ],
+   "inQuestieDB": true
+  },
+  "84191": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16708, 16709, 16711",
+   "corroboratedBy": [
+    8956,
+    9020
+   ],
+   "inQuestieDB": true
+  },
+  "84192": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16668, 16669, 16670",
+   "corroboratedBy": [
+    8957
+   ],
+   "inQuestieDB": true
+  },
+  "84193": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16699, 16701, 16704",
+   "corroboratedBy": [
+    8958,
+    9021
+   ],
+   "inQuestieDB": true
+  },
+  "84194": {
+   "name": "Anthion's Parting Words",
+   "faction": "Horde",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16732, 16733, 16734",
+   "corroboratedBy": [
+    8959,
+    9022
+   ],
+   "inQuestieDB": true
+  },
+  "84195": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Druid",
+   "requiredClasses": 1024,
+   "method": "itemset",
+   "evidence": "ItemSet 185 'Wildheart Raiment': items 16706, 16720",
+   "corroboratedBy": [
+    8999,
+    9007
+   ],
+   "inQuestieDB": true
+  },
+  "84196": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 186 'Beaststalker Armor': items 16674, 16677",
+   "corroboratedBy": [
+    9000,
+    9008
+   ],
+   "inQuestieDB": true
+  },
+  "84197": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16686, 16688",
+   "corroboratedBy": [
+    9001,
+    9014
+   ],
+   "inQuestieDB": false
+  },
+  "84198": {
+   "name": "Saving the Best for Last",
+   "faction": "Both",
+   "class": "Paladin",
+   "requiredClasses": 2,
+   "method": "itemset",
+   "evidence": "ItemSet 188 'Lightforge Armor': items 16726, 16727",
+   "corroboratedBy": [
+    9002
+   ],
+   "inQuestieDB": true
+  },
+  "84199": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16690, 16693",
+   "corroboratedBy": [
+    9003,
+    9009
+   ],
+   "inQuestieDB": false
+  },
+  "84200": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16707, 16721",
+   "corroboratedBy": [
+    9004,
+    9010
+   ],
+   "inQuestieDB": true
+  },
+  "84201": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16698, 16700",
+   "corroboratedBy": [
+    9005,
+    9012
+   ],
+   "inQuestieDB": false
+  },
+  "84202": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16730, 16731",
+   "corroboratedBy": [
+    9006,
+    9013
+   ],
+   "inQuestieDB": true
+  },
+  "84203": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Druid",
+   "requiredClasses": 1024,
+   "method": "itemset",
+   "evidence": "ItemSet 185 'Wildheart Raiment': items 16706, 16720",
+   "corroboratedBy": [
+    8999,
+    9007
+   ],
+   "inQuestieDB": true
+  },
+  "84204": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Hunter",
+   "requiredClasses": 4,
+   "method": "itemset",
+   "evidence": "ItemSet 1668 'Beaststalker Armor': items 226720, 226723",
+   "corroboratedBy": [],
+   "inQuestieDB": false
+  },
+  "84205": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Mage",
+   "requiredClasses": 128,
+   "method": "itemset",
+   "evidence": "ItemSet 181 'Magister's Regalia': items 16686, 16688",
+   "corroboratedBy": [
+    9001,
+    9014
+   ],
+   "inQuestieDB": false
+  },
+  "84206": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Priest",
+   "requiredClasses": 16,
+   "method": "itemset",
+   "evidence": "ItemSet 182 'Vestments of the Devout': items 16690, 16693",
+   "corroboratedBy": [
+    9003,
+    9009
+   ],
+   "inQuestieDB": false
+  },
+  "84207": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Rogue",
+   "requiredClasses": 8,
+   "method": "itemset",
+   "evidence": "ItemSet 184 'Shadowcraft Armor': items 16707, 16721",
+   "corroboratedBy": [
+    9004,
+    9010
+   ],
+   "inQuestieDB": false
+  },
+  "84208": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16666, 16667",
+   "corroboratedBy": [
+    9011
+   ],
+   "inQuestieDB": true
+  },
+  "84209": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Warlock",
+   "requiredClasses": 256,
+   "method": "itemset",
+   "evidence": "ItemSet 183 'Dreadmist Raiment': items 16698, 16700",
+   "corroboratedBy": [
+    9005,
+    9012
+   ],
+   "inQuestieDB": false
+  },
+  "84210": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Warrior",
+   "requiredClasses": 1,
+   "method": "itemset",
+   "evidence": "ItemSet 189 'Battlegear of Valor': items 16730, 16731",
+   "corroboratedBy": [
+    9006,
+    9013
+   ],
+   "inQuestieDB": true
+  },
+  "97411": {
+   "name": "An Earnest Proposition",
+   "faction": "Horde",
+   "class": "Paladin",
+   "requiredClasses": 2,
+   "method": "itemset",
+   "evidence": "ItemSet 188 'Lightforge Armor': items 16722",
+   "corroboratedBy": [],
+   "inQuestieDB": true
+  },
+  "97412": {
+   "name": "Just Compensation",
+   "faction": "Horde",
+   "class": "Paladin",
+   "requiredClasses": 2,
+   "method": "itemset",
+   "evidence": "ItemSet 188 'Lightforge Armor': items 16723, 16724",
+   "corroboratedBy": [
+    8933
+   ],
+   "inQuestieDB": true
+  },
+  "97413": {
+   "name": "Anthion's Parting Words",
+   "faction": "Both",
+   "class": "Paladin",
+   "requiredClasses": 2,
+   "method": "objectives-text",
+   "evidence": "objectivesText: 'Lightforge'",
+   "corroboratedBy": [],
+   "inQuestieDB": true
+  },
+  "97414": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "class": "Paladin",
+   "requiredClasses": 2,
+   "method": "itemset",
+   "evidence": "ItemSet 188 'Lightforge Armor': items 16726, 16727",
+   "corroboratedBy": [
+    9002
+   ],
+   "inQuestieDB": false
+  },
+  "97447": {
+   "name": "An Earnest Proposition",
+   "faction": "Alliance",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16671",
+   "corroboratedBy": [],
+   "inQuestieDB": true
+  },
+  "97448": {
+   "name": "Just Compensation",
+   "faction": "Alliance",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16672, 16673",
+   "corroboratedBy": [
+    8942
+   ],
+   "inQuestieDB": true
+  },
+  "97449": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16668, 16669, 16670",
+   "corroboratedBy": [
+    8957
+   ],
+   "inQuestieDB": false
+  },
+  "97450": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "class": "Shaman",
+   "requiredClasses": 64,
+   "method": "itemset",
+   "evidence": "ItemSet 187 'The Elements': items 16666, 16667",
+   "corroboratedBy": [
+    9011
+   ],
+   "inQuestieDB": false
+  }
+ },
+ "skipped": {
+  "84147": {
+   "name": "An Earnest Proposition",
+   "reason": "questiedb-has-class",
+   "requiredClasses": 1024
+  },
+  "84150": {
+   "name": "An Earnest Proposition",
+   "reason": "questiedb-has-class",
+   "requiredClasses": 2
+  }
+ }
+}

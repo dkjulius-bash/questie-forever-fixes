@@ -1,0 +1,573 @@
+{
+ "_comment": "Entities QuestieDB has no spawns for, filled from Wowhead Forever tooltip coordinates. Built by tools/gap_fill_select.py from the all-zones audit; refresh.py re-checks each one (ships only while QuestieDB still has no spawns, through the wh-tooltip rules) and never ships anything else from that audit.",
+ "source": {
+  "audit": "work/audit-all/candidates.json",
+  "auditDate": "2026-11-26",
+  "rule": "action == fill-gap: questie-no-spawns, and the Wowhead tooltip zone is one of the zones of the entity's quests"
+ },
+ "ship": [
+  {
+   "kind": "Npc",
+   "id": 1811,
+   "name": "Plaguewing Vulture",
+   "whZone": 28,
+   "zones": [
+    "Western Plaguelands"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 3898,
+   "name": "Aligar the Tormentor",
+   "whZone": 331,
+   "zones": [
+    "Ashenvale"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 3899,
+   "name": "Balizar the Umbrage",
+   "whZone": 331,
+   "zones": [
+    "Ashenvale"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 3900,
+   "name": "Caedakar the Vicious",
+   "whZone": 331,
+   "zones": [
+    "Ashenvale"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 4411,
+   "name": "Darkfang Lurker",
+   "whZone": 15,
+   "zones": [
+    "Dustwallow Marsh"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 5676,
+   "name": "Summoned Voidwalker",
+   "whZone": 1497,
+   "zones": [
+    "Undercity"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 5677,
+   "name": "Summoned Succubus",
+   "whZone": 1497,
+   "zones": [
+    "Undercity"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 6013,
+   "name": "Wayward Buzzard",
+   "whZone": 3,
+   "zones": [
+    "Badlands"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 8338,
+   "name": "Dark Iron Marksman",
+   "whZone": 51,
+   "zones": [
+    "Searing Gorge"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 8581,
+   "name": "Blood Elf Defender",
+   "whZone": 16,
+   "zones": [
+    "Azshara"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance",
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 9601,
+   "name": "Treant Spirit",
+   "whZone": 361,
+   "zones": [
+    "Felwood"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 9605,
+   "name": "Blackrock Raider",
+   "whZone": 46,
+   "zones": [
+    "Burning Steppes"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Alliance"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 10442,
+   "name": "Chromatic Whelp",
+   "whZone": 1583,
+   "zones": [
+    "Blackrock Spire"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 3,
+   "factions": [
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 10601,
+   "name": "Urok Enforcer",
+   "whZone": 1583,
+   "zones": [
+    "Blackrock Spire"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 10602,
+   "name": "Urok Ogre Magus",
+   "whZone": 1583,
+   "zones": [
+    "Blackrock Spire"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 11701,
+   "name": "Mor'vek",
+   "whZone": 490,
+   "zones": [
+    "Un Goro Crater"
+   ],
+   "roles": [
+    "finisher",
+    "giver"
+   ],
+   "quests": 1,
+   "factions": [
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 12140,
+   "name": "Guardian of Elune",
+   "whZone": 618,
+   "zones": [
+    "Winterspring"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Alliance"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 15571,
+   "name": "Maws",
+   "whZone": 16,
+   "zones": [
+    "Azshara"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 15759,
+   "name": "Supreme Silithid Flayer",
+   "whZone": 1377,
+   "zones": [
+    "Silithus"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Both"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 230775,
+   "name": "Rage Talon Quartermaster",
+   "whZone": 1583,
+   "zones": [
+    "Blackrock Spire"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Npc",
+   "id": 264712,
+   "name": "High Priestess Lorthuna",
+   "whZone": 16593,
+   "zones": [
+    "Zephras Isle"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 1,
+   "factions": [
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 1738,
+   "name": "Syndicate Documents",
+   "whZone": 36,
+   "zones": [
+    "Alterac Mountains"
+   ],
+   "roles": [
+    "giver"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 1739,
+   "name": "Syndicate Documents",
+   "whZone": 36,
+   "zones": [
+    "Alterac Mountains"
+   ],
+   "roles": [
+    "giver"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 3714,
+   "name": "Alliance Strongbox",
+   "whZone": 17,
+   "zones": [
+    "The Barrens"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 22,
+   "factions": [
+    "Alliance",
+    "Both",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 103574,
+   "name": "Filled Containment Coffer",
+   "whZone": 1497,
+   "zones": [
+    "Undercity"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 2,
+   "factions": [
+    "Alliance",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 105570,
+   "name": "Alliance Strongbox",
+   "whZone": 36,
+   "zones": [
+    "Alterac Mountains"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 15,
+   "factions": [
+    "Alliance",
+    "Both",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 181068,
+   "name": "Small Obsidian Chunk",
+   "whZone": 1377,
+   "zones": [
+    "Silithus"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 17,
+   "factions": [
+    "Alliance",
+    "Both",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 181069,
+   "name": "Large Obsidian Chunk",
+   "whZone": 1377,
+   "zones": [
+    "Silithus"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 12,
+   "factions": [
+    "Alliance",
+    "Both",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 181108,
+   "name": "Truesilver Deposit",
+   "whZone": 361,
+   "zones": [
+    "Felwood"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 4,
+   "factions": [
+    "Alliance",
+    "Horde"
+   ]
+  },
+  {
+   "kind": "Object",
+   "id": 181109,
+   "name": "Gold Vein",
+   "whZone": 361,
+   "zones": [
+    "Felwood"
+   ],
+   "roles": [
+    "objective"
+   ],
+   "quests": 4,
+   "factions": [
+    "Alliance",
+    "Horde"
+   ]
+  }
+ ],
+ "excluded": [
+  {
+   "kind": "Npc",
+   "id": 2614,
+   "name": "Argent Medic",
+   "whZone": 139,
+   "quests": 2,
+   "reason": "redrawn-map: Wowhead tooltip coordinates are never used on map 139 (stale Era frame)"
+  },
+  {
+   "kind": "Npc",
+   "id": 14697,
+   "name": "Lumbering Horror",
+   "whZone": 46,
+   "quests": 13,
+   "reason": "scourge-invasion: event-only mob (Argent Dawn Scourge Invasion), not a permanent spawn"
+  },
+  {
+   "kind": "Npc",
+   "id": 16141,
+   "name": "Ghoul Berserker",
+   "whZone": 46,
+   "quests": 13,
+   "reason": "scourge-invasion: event-only mob (Argent Dawn Scourge Invasion), not a permanent spawn"
+  },
+  {
+   "kind": "Npc",
+   "id": 16298,
+   "name": "Spectral Soldier",
+   "whZone": 46,
+   "quests": 13,
+   "reason": "scourge-invasion: event-only mob (Argent Dawn Scourge Invasion), not a permanent spawn"
+  },
+  {
+   "kind": "Npc",
+   "id": 16299,
+   "name": "Skeletal Shocktrooper",
+   "whZone": 4,
+   "quests": 13,
+   "reason": "scourge-invasion: event-only mob (Argent Dawn Scourge Invasion), not a permanent spawn"
+  },
+  {
+   "kind": "Npc",
+   "id": 16379,
+   "name": "Spirit of the Damned",
+   "whZone": 46,
+   "quests": 13,
+   "reason": "scourge-invasion: event-only mob (Argent Dawn Scourge Invasion), not a permanent spawn"
+  },
+  {
+   "kind": "Npc",
+   "id": 16380,
+   "name": "Bone Witch",
+   "whZone": 46,
+   "quests": 13,
+   "reason": "scourge-invasion: event-only mob (Argent Dawn Scourge Invasion), not a permanent spawn"
+  },
+  {
+   "kind": "Npc",
+   "id": 16383,
+   "name": "Flameshocker",
+   "whZone": 1497,
+   "quests": 6,
+   "reason": "scourge-invasion: event-only mob (Argent Dawn Scourge Invasion), not a permanent spawn"
+  }
+ ]
+}

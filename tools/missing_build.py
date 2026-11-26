@@ -136,7 +136,8 @@ def build_quest(p, db, names, blacklist):
     elif q["blacklisted"]:
         cls = "blacklisted"
     elif nogiver:
-        cls = "no-giver-data"
+        has_obj = any(q["objectives"][k] for k in ("creature", "object", "item"))
+        cls = "variant-no-giver" if same and has_obj else "no-giver-data"
     else:
         # same name but different objectives (e.g. per-class T0.5 quest variants) -> distinct quest
         cls = "variant" if same else "real"
@@ -170,12 +171,17 @@ def is_dup(q, nogiver, other_id, other_fac, fac, db):
     record is a giverless legacy copy, or both carry the same objective entities (and source item)."""
     if not (other_fac == fac or "Both" in (other_fac, fac)):
         return False
-    if nogiver:
-        return True
     row = db.get("Quest", other_id) or {}
+    # Forever-new ids (>= 90000) may reuse a legacy name for a different quest: giverless ones are only
+    # duplicates when the objective entities and source item match too.
+    if nogiver and q["id"] < 90000:
+        return True
     mine = {(g, i) for g, key in ((1, "creature"), (2, "object"), (3, "item")) for i, _ in q["objectives"][key]}
     if mine != _db_objective_ids(row) or q["sourceItemId"] != row.get("sourceItemId"):
         return False
+    if nogiver:
+        # a giverless QuestieDB row cannot be tracked from a giver, so it never covers a Forever-new quest
+        return bool(groups_raw(row.get("startedBy")) or groups_raw(row.get("finishedBy")))
     # Forever re-issued some quests under new ids with new givers (e.g. T0.5 quests: Deliana 16013 ->
     # 230319); same objectives but a different giver set is a distinct quest.
     st = {(g, i) for g, k in ((1, "npc"), (2, "object"), (3, "item")) for i in q["starters"][k]}

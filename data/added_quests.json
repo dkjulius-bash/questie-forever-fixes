@@ -1,0 +1,1082 @@
+{
+ "_comment": "Quests missing from QuestieDB, curated from Wowhead Forever quest pages. Built by tools/added_quests_build.py from work/missing/quests.json; refresh.py ships them as new rows and retires any id QuestieDB has since added. Edit only 'overrides' (field -> value, null deletes the field); a rebuild keeps them.",
+ "quests": {
+  "8259": {
+   "name": "A More Fitting Reward",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=8259",
+    "collected": "2026-11-26",
+    "patch": "1.13.4 \"Classic\"",
+    "classification": "real",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "A More Fitting Reward",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      13417
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      13417
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "requiredClasses": 64,
+    "zoneOrSort": -82
+   },
+   "overrides": {}
+  },
+  "82081": {
+   "name": "A Broken Ritual",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=82081",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "real",
+    "gaps": [
+     "no-starter"
+    ],
+    "notes": [
+     "Wowhead lists item 221346 as (Provided) and no starter; treated as item-started (same shape as QuestieDB quest 7501)"
+    ]
+   },
+   "row": {
+    "name": "A Broken Ritual",
+    "questLevel": 50,
+    "requiredLevel": 50,
+    "finishedBy": {
+     "1": [
+      14875
+     ]
+    },
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Bring the Scapula of the Fallen Avatar to Molthor in Yojamba Isle."
+    ],
+    "sourceItemId": 221346,
+    "zoneOrSort": 1477,
+    "reputationReward": [
+     [
+      72,
+      200
+     ],
+     [
+      47,
+      200
+     ],
+     [
+      69,
+      200
+     ]
+    ],
+    "startedBy": {
+     "3": [
+      221346
+     ]
+    }
+   },
+   "overrides": {}
+  },
+  "84185": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84185",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [
+     "series-without-self"
+    ],
+    "notes": []
+   },
+   "row": {
+    "name": "Anthion's Parting Words",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      16016
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230319
+     ]
+    },
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Return to Deliana in Ironforge with a set of Dreadmist Sandals, Dreadmist Leggings and Dreadmist Mantle."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16704
+      ],
+      [
+       16699
+      ],
+      [
+       16701
+      ]
+     ]
+    },
+    "zoneOrSort": 1537
+   },
+   "overrides": {}
+  },
+  "84197": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84197",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230319
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230319
+     ]
+    },
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Give Deliana your Magister's Crown and Magister's Robes."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16686
+      ],
+      [
+       16688
+      ]
+     ]
+    },
+    "zoneOrSort": 1537
+   },
+   "overrides": {}
+  },
+  "84199": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84199",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230319
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230319
+     ]
+    },
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Give Deliana your Devout Crown and Devout Robe."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16693
+      ],
+      [
+       16690
+      ]
+     ]
+    },
+    "zoneOrSort": 1537
+   },
+   "overrides": {}
+  },
+  "84201": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84201",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230319
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230319
+     ]
+    },
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Give Deliana your Dreadmist Mask and Dreadmist Robe."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16698
+      ],
+      [
+       16700
+      ]
+     ]
+    },
+    "zoneOrSort": 1537
+   },
+   "overrides": {}
+  },
+  "84204": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84204",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [
+     "objective-not-in-questiedb:item=226720",
+     "objective-not-in-questiedb:item=226723"
+    ],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Give Mokvar your Beaststalker's Cap and Beaststalker's Tunic."
+    ],
+    "objectives": {
+     "3": [
+      [
+       226720
+      ],
+      [
+       226723
+      ]
+     ]
+    },
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "84205": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84205",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Give Mokvar your Magister's Crown and Magister's Robes."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16686
+      ],
+      [
+       16688
+      ]
+     ]
+    },
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "84206": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84206",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Give Mokvar your Devout Crown and Devout Robe."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16693
+      ],
+      [
+       16690
+      ]
+     ]
+    },
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "84207": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84207",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Give Mokvar your Shadowcraft Cap and Shadowcraft Tunic."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16707
+      ],
+      [
+       16721
+      ]
+     ]
+    },
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "84209": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84209",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [],
+    "notes": []
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "startedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      230317
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Give Mokvar your Dreadmist Mask and Dreadmist Robe."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16698
+      ],
+      [
+       16700
+      ]
+     ]
+    },
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "84551": {
+   "name": "The Light and How To Swing It",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=84551",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [
+     "no-starter"
+    ],
+    "notes": [
+     "Wowhead lists item 228690 as (Provided) and no starter; treated as item-started (same shape as QuestieDB quest 7501)"
+    ]
+   },
+   "row": {
+    "name": "The Light and How To Swing It",
+    "questLevel": 60,
+    "requiredLevel": 54,
+    "finishedBy": {
+     "1": [
+      14382
+     ]
+    },
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Return the book to its rightful owners."
+    ],
+    "sourceItemId": 228690,
+    "zoneOrSort": 2557,
+    "reputationReward": [
+     [
+      809,
+      200
+     ]
+    ],
+    "startedBy": {
+     "3": [
+      228690
+     ]
+    }
+   },
+   "overrides": {}
+  },
+  "95818": {
+   "name": "A Quick Craft",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=95818",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant-no-giver",
+    "gaps": [
+     "no-starter",
+     "no-ender"
+    ],
+    "notes": [
+     "No giver on Wowhead; shipped without startedBy/finishedBy (never guess giver ids) so Questie can track the objectives once the quest is in the log. Suggested givers: work/audit-all/review_quests.md",
+     "faction set to Alliance by hand: the Wowhead page carries no side; pre-quest 95817 (Rotgath Stonebeard, Ironforge) is Alliance-only in QuestieDB, so overrides.requiredRaces is set to the Alliance mask"
+    ]
+   },
+   "row": {
+    "name": "A Quick Craft",
+    "questLevel": 60,
+    "requiredLevel": 1,
+    "objectivesText": [
+     "Bring the requested materials to Rotgath Stonebeard near the Great Forge in Ironforge."
+    ],
+    "objectives": {
+     "3": [
+      [
+       3860
+      ],
+      [
+       4234
+      ],
+      [
+       3821
+      ]
+     ]
+    },
+    "preQuestSingle": [
+     95817
+    ],
+    "zoneOrSort": 1537
+   },
+   "overrides": {
+    "requiredRaces": 4294967373
+   }
+  },
+  "95820": {
+   "name": "Karolek",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=95820",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "real",
+    "gaps": [],
+    "notes": [
+     "objectivesText trimmed at stray Wowhead template JSON"
+    ]
+   },
+   "row": {
+    "name": "Karolek",
+    "questLevel": 60,
+    "requiredLevel": 1,
+    "startedBy": {
+     "1": [
+      256388
+     ]
+    },
+    "finishedBy": {
+     "1": [
+      3365
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Meet Karolek at the Kodohide Leatherworkers shop in Orgrimmar."
+    ],
+    "preQuestSingle": [
+     95819
+    ],
+    "nextQuestInChain": 95821,
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "95821": {
+   "name": "A Quick Craft",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=95821",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant",
+    "gaps": [
+     "no-starter"
+    ],
+    "notes": []
+   },
+   "row": {
+    "name": "A Quick Craft",
+    "questLevel": 60,
+    "requiredLevel": 1,
+    "finishedBy": {
+     "1": [
+      3365
+     ]
+    },
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Bring the requested materials to Karolek in the Kodohide Leatherworkers shop in Orgrimmar."
+    ],
+    "objectives": {
+     "3": [
+      [
+       4234
+      ],
+      [
+       3860
+      ],
+      [
+       3821
+      ]
+     ]
+    },
+    "preQuestSingle": [
+     95820
+    ],
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "96265": {
+   "name": "Secret of the Barrow Deeps",
+   "faction": "Both",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=96265",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "real",
+    "gaps": [
+     "no-starter",
+     "no-ender"
+    ],
+    "notes": [
+     "Wowhead lists item 277154 as (Provided) and no starter; treated as item-started (same shape as QuestieDB quest 7501)"
+    ]
+   },
+   "row": {
+    "name": "Secret of the Barrow Deeps",
+    "questLevel": 60,
+    "requiredLevel": 60,
+    "objectivesText": [
+     "Take the Corrupted Gemstone to Thera Duskwhisper in Winterspring."
+    ],
+    "sourceItemId": 277154,
+    "zoneOrSort": 618,
+    "startedBy": {
+     "3": [
+      277154
+     ]
+    }
+   },
+   "overrides": {}
+  },
+  "97414": {
+   "name": "Saving the Best for Last",
+   "faction": "Horde",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=97414",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant-no-giver",
+    "gaps": [
+     "no-starter",
+     "no-ender"
+    ],
+    "notes": [
+     "No giver on Wowhead; shipped without startedBy/finishedBy (never guess giver ids) so Questie can track the objectives once the quest is in the log. Suggested givers: work/audit-all/review_quests.md"
+    ]
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "requiredRaces": 8589934770,
+    "objectivesText": [
+     "Give Mokvar your Lightforge Helm and Lightforge Breastplate."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16727
+      ],
+      [
+       16726
+      ]
+     ]
+    },
+    "zoneOrSort": 1637
+   },
+   "overrides": {}
+  },
+  "97449": {
+   "name": "Anthion's Parting Words",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=97449",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant-no-giver",
+    "gaps": [
+     "no-starter",
+     "no-ender",
+     "series-without-self"
+    ],
+    "notes": [
+     "No giver on Wowhead; shipped without startedBy/finishedBy (never guess giver ids) so Questie can track the objectives once the quest is in the log. Suggested givers: work/audit-all/review_quests.md"
+    ]
+   },
+   "row": {
+    "name": "Anthion's Parting Words",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Return to Deliana in Ironforge with a set of Boots of Elements, Kilt of Elements and Pauldrons of Elements."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16670
+      ],
+      [
+       16668
+      ],
+      [
+       16669
+      ]
+     ]
+    },
+    "zoneOrSort": 1537
+   },
+   "overrides": {}
+  },
+  "97450": {
+   "name": "Saving the Best for Last",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=97450",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant-no-giver",
+    "gaps": [
+     "no-starter",
+     "no-ender"
+    ],
+    "notes": [
+     "No giver on Wowhead; shipped without startedBy/finishedBy (never guess giver ids) so Questie can track the objectives once the quest is in the log. Suggested givers: work/audit-all/review_quests.md"
+    ]
+   },
+   "row": {
+    "name": "Saving the Best for Last",
+    "questLevel": 60,
+    "requiredLevel": 58,
+    "requiredRaces": 4294967373,
+    "objectivesText": [
+     "Give Deliana your Coif of Elements and Vest of Elements."
+    ],
+    "objectives": {
+     "3": [
+      [
+       16667
+      ],
+      [
+       16666
+      ]
+     ]
+    },
+    "zoneOrSort": 1537
+   },
+   "overrides": {}
+  },
+  "98830": {
+   "name": "The Broken Glaive",
+   "faction": "Both",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=98830",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "real",
+    "gaps": [
+     "no-starter",
+     "no-ender"
+    ],
+    "notes": [
+     "Wowhead lists item 284660 as (Provided) and no starter; treated as item-started (same shape as QuestieDB quest 7501)"
+    ]
+   },
+   "row": {
+    "name": "The Broken Glaive",
+    "questLevel": 60,
+    "requiredLevel": 52,
+    "objectivesText": [
+     "Deliver Tortheldrin's Broken Glaive to the Shen'dralar Ancient in Dire Maul."
+    ],
+    "sourceItemId": 284660,
+    "zoneOrSort": 2557,
+    "reputationReward": [
+     [
+      47,
+      100
+     ],
+     [
+      54,
+      100
+     ]
+    ],
+    "startedBy": {
+     "3": [
+      284660
+     ]
+    }
+   },
+   "overrides": {}
+  },
+  "99366": {
+   "name": "An Epic Ride",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=99366",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant-no-giver",
+    "gaps": [
+     "no-starter",
+     "no-ender"
+    ],
+    "notes": [
+     "No giver on Wowhead; shipped without startedBy/finishedBy (never guess giver ids) so Questie can track the objectives once the quest is in the log. Suggested givers: work/audit-all/review_quests.md"
+    ]
+   },
+   "row": {
+    "name": "An Epic Ride",
+    "questLevel": 60,
+    "requiredLevel": 60,
+    "requiredRaces": 1,
+    "objectivesText": [
+     "Inspect the armored riding horses to choose your epic mount."
+    ],
+    "objectives": {
+     "1": [
+      [
+       276888
+      ],
+      [
+       276890
+      ],
+      [
+       276889
+      ]
+     ]
+    },
+    "zoneOrSort": 12,
+    "reputationReward": [
+     [
+      72,
+      25
+     ]
+    ]
+   },
+   "overrides": {}
+  },
+  "99367": {
+   "name": "An Epic Ride",
+   "faction": "Alliance",
+   "provenance": {
+    "source": "wh-page",
+    "url": "https://www.wowhead.com/forever/quest=99367",
+    "collected": "2026-11-26",
+    "patch": "1.60.1",
+    "classification": "variant-no-giver",
+    "gaps": [
+     "no-starter",
+     "no-ender"
+    ],
+    "notes": [
+     "No giver on Wowhead; shipped without startedBy/finishedBy (never guess giver ids) so Questie can track the objectives once the quest is in the log. Suggested givers: work/audit-all/review_quests.md"
+    ]
+   },
+   "row": {
+    "name": "An Epic Ride",
+    "questLevel": 60,
+    "requiredLevel": 60,
+    "requiredRaces": 1,
+    "objectivesText": [
+     "Inspect the armored riding horses to choose your epic mount."
+    ],
+    "objectives": {
+     "1": [
+      [
+       276891
+      ],
+      [
+       276893
+      ],
+      [
+       276892
+      ]
+     ]
+    },
+    "zoneOrSort": 12,
+    "reputationReward": [
+     [
+      72,
+      25
+     ]
+    ]
+   },
+   "overrides": {}
+  }
+ },
+ "items": {
+  "221346": {
+   "quests": [
+    82081
+   ],
+   "role": "starter",
+   "provenance": {
+    "source": "wh-page",
+    "nameSource": "objectivesText of quest 82081; Wowhead page env: 'Objectives: no longer Scapula of the Fallen Avatar'"
+   },
+   "row": {
+    "startQuest": 82081
+   },
+   "overrides": {
+    "name": "Scapula of the Fallen Avatar"
+   }
+  },
+  "226720": {
+   "quests": [
+    84204
+   ],
+   "role": "objective",
+   "provenance": {
+    "source": "wh-page",
+    "nameSource": "objectivesText of quest 84204"
+   },
+   "row": {},
+   "overrides": {
+    "name": "Beaststalker's Cap"
+   }
+  },
+  "226723": {
+   "quests": [
+    84204
+   ],
+   "role": "objective",
+   "provenance": {
+    "source": "wh-page",
+    "nameSource": "objectivesText of quest 84204"
+   },
+   "row": {},
+   "overrides": {
+    "name": "Beaststalker's Tunic"
+   }
+  },
+  "228690": {
+   "quests": [
+    84551
+   ],
+   "role": "starter",
+   "provenance": {
+    "source": "wh-page",
+    "nameSource": "Wowhead page env of quest 84551 ('Objectives: no longer The Light and How to Swing It'); classic item 18359 has this name"
+   },
+   "row": {
+    "startQuest": 84551
+   },
+   "overrides": {
+    "name": "The Light and How to Swing It"
+   }
+  },
+  "277154": {
+   "quests": [
+    96265
+   ],
+   "role": "starter",
+   "provenance": {
+    "source": "wh-page",
+    "nameSource": "QuestieDB (entry only adds startQuest)"
+   },
+   "row": {
+    "startQuest": 96265
+   },
+   "overrides": {}
+  },
+  "284660": {
+   "quests": [
+    98830
+   ],
+   "role": "starter",
+   "provenance": {
+    "source": "wh-page",
+    "nameSource": "objectivesText of quest 98830 (the page's objective line only reads 'Item #284660 (Provided)')"
+   },
+   "row": {
+    "startQuest": 98830
+   },
+   "overrides": {
+    "name": "Tortheldrin's Broken Glaive"
+   }
+  }
+ },
+ "excluded": {
+  "92454": {
+   "name": "Welcome!",
+   "reason": "No usable starter or ender: starter item 251900 (Thendal Grove Gift Voucher; client ItemSparse StartQuestID=92454) has no drop/vendor source in QuestieDB, and the ender Dalia Windbreeze is not in QuestieDB and not linked on the Wowhead page."
+  },
+  "93451": {
+   "name": "Phantasmal Problems",
+   "reason": "duplicate of QuestieDB 93450"
+  },
+  "93689": {
+   "name": "Friend of the Kirin Tor",
+   "reason": "uncertain: giverless; QuestieDB 92459 with the same name is Alliance with a different zone; may be the Horde counterpart"
+  },
+  "96915": {
+   "name": "Field of Honor: Week 4",
+   "reason": "duplicate of QuestieDB 96912, 96913, 96914"
+  },
+  "98447": {
+   "name": "The Valor Family",
+   "reason": "uncertain: giverless; objective npc 272450 differs from QuestieDB 96139"
+  }
+ }
+}

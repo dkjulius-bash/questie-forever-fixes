@@ -33,6 +33,9 @@ def _conv(v, lua):
     return d
 
 
+to_py = _conv
+
+
 def load_module(path):
     """Returns {entityId:int -> {fieldName:str -> value}}. Contiguous 1..n Lua tables become lists,
     tables with holes/string keys become dicts."""

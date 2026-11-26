@@ -1,1 +1,1 @@
-Fills gaps in Questie's WoW Forever database (missing and misplaced quest mob spawns and drop sources) without touching Questie itself.
+Fills gaps in Questie's WoW Forever database (missing quests, Tier 0.5 class restrictions, missing and misplaced quest mob spawns and drop sources) without touching Questie itself.

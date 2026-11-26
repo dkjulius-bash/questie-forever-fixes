@@ -1,8 +1,8 @@
 ## Interface: 16001
 ## Title: Questie Forever Fixes
-## Notes: Fills gaps in Questie's WoW Forever database (spawns, objective sources) via QuestieDB's correction API.
+## Notes: Fills gaps in Questie's WoW Forever database (missing quests, class restrictions, spawns, objective sources) via QuestieDB's correction API.
 ## Author: dkjulius-bash
-## Version: 0.2.0
+## Version: 0.3.0
 ## Dependencies: Questie, QuestieDB
 ## OptionalDeps: QuestieForeverFixes_Local
 ## SavedVariables: QuestieForeverFixesDB

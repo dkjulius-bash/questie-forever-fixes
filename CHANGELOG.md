@@ -1,6 +1,6 @@
 # Changelog
 
-## Unreleased (proposed 0.3.0)
+## 0.3.0 – 2026-11-26
 
 - Adds 22 quests that QuestieDB lacks (11 Alliance, 9 Horde, 2 neutral). They include the missing Tier 0.5 "Saving the Best for Last" and "Anthion's Parting Words" variants for both factions, "A Broken Ritual", "The Light and How To Swing It", "A More Fitting Reward", the Orgrimmar and Ironforge "A Quick Craft" chain, "Secret of the Barrow Deeps", "The Broken Glaive" and two "An Epic Ride" variants. 7 of them have no known quest giver yet. They ship without one, so Questie tracks their objectives once the quest is in your log but shows no "!" for them.
 - Quest givers learn the new quests, and 3 new quest-starting items get their quest link. 3 objective items that QuestieDB lacks get a name.

@@ -1,7 +1,8 @@
 # QuestieForeverFixes
 
 A small companion addon for [Questie](https://github.com/Questie/Questie) on WoW Forever. It fills gaps in
-Questie's database (missing or misplaced NPC spawns, objective sources) and is loaded through QuestieDB's
+Questie's database (missing quests, Tier 0.5 class restrictions, missing or misplaced NPC spawns,
+objective sources) and is loaded through QuestieDB's
 public correction API. Questie updates therefore never overwrite it, and every refresh is diffed against the
 installed QuestieDB, so the patch shrinks as Questie fixes things upstream. Not affiliated with the Questie
 team.
@@ -18,14 +19,14 @@ Requires Questie and QuestieDB. To update, replace the folder and `/reload`. To 
 
 ## What it fixes right now
 
-Version 0.2.0, generated against Questie 12.15.0 / QuestieDB 1.1.6:
+Version 0.3.0, generated against Questie 12.15.0 / QuestieDB 1.1.6, for Alliance and Horde:
 
-| Type | Rows | From QuestieTrace | From Wowhead tooltips |
-|---|---|---|---|
-| Quest | 1 | 1 | 0 |
-| NPC | 49 | 35 | 14 |
-| Object | 11 | 11 | 0 |
-| Item (drop sources) | 80 | 80 | 0 |
+| Type | Rows | What |
+|---|---|---|
+| Quest | 81 | 22 quests QuestieDB lacks (11 Alliance, 9 Horde, 2 neutral), 70 Tier 0.5 class restrictions (12 of them on the new quests), 1 objective fix |
+| NPC | 76 | 35 spawn fixes from QuestieTrace, 33 from Wowhead tooltips, 8 quest givers that learn the new quests |
+| Object | 19 | 11 spawn fixes from QuestieTrace, 8 from Wowhead tooltips |
+| Item | 86 | 80 drop sources from QuestieTrace, 6 quest-starting or objective items |
 
 Examples:
 

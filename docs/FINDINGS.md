@@ -54,6 +54,24 @@ Rayne (16135), tooltip (81.2, 59.0) vs QuestieDB (71.4, 49.4). QuestieDB matches
 inverse of `EraToForever`, so Wowhead is the stale side. Redridge (Snargl, 255906) shows the same. This is
 why Wowhead is never used on maps 44, 139, 215 and 1519.
 
+## Update 2026-11-26: all zones, both factions, missing quests
+
+Questie 12.15.0, QuestieDB 1.1.6.
+
+- **All-zones audit** (`tools/zone_audit.py --all-zones`; outputs in `work/audit-all/`): 106 zone buckets and 6,080 quests (2,163 Alliance, 1,847 Horde, 2,070 neutral) were checked. Of 1,223 non-ok entities, 975 have no Wowhead coordinates, 119 are zone mismatches, 50 are Era-frame artefacts, 41 are far from Wowhead and 38 have no spawns in QuestieDB at all.
+  - The 38 entities without spawns are the "fill-gap" set. 27 ship now. 7 Scourge Invasion mobs are excluded: they are event-only.
+  - Argent Medic is excluded too: it sits on Eastern Plaguelands, a redrawn map.
+  - 3 more were already covered by trace or earlier Wowhead rows.
+  - The 41 "far" entities are not shipped. They are listed for in-game checking; 17 are Felwood's corrupted plants.
+- **Missing quests**: 61 Wowhead Forever quest pages were collected once in a browser (`tools/wh_quest_page.js`; refresh never fetches pages).
+  - 17 are real quests QuestieDB lacks. 6 more are giverless Forever variants whose objectives differ from every QuestieDB quest of the same name.
+  - 22 ship (`data/added_quests.json`). 92454 "Welcome!" is excluded: no usable starter or ender. 93689 and 98447 are uncertain. 93451 and 96915 are duplicates.
+  - QuestieDB's runtime-correction API creates brand-new quest ids, and Questie picks them up at login.
+- **Tier 0.5 class restrictions**: Forever re-issued the Tier 0.5 chains under ids 84147-84210 and 97411-97450. QuestieDB sets requiredClasses on only 2 of them.
+  - Item `AllowableClass` cannot be used: the Forever ItemSparse table lacks the Dungeon Set items, and those items carry no class restriction anyway.
+  - Instead the class comes from the objective items' item set (DB2 ItemSet) via the set name. Every result agrees with the classic quest that has the same objectives, where one exists. One quest (97413) is derived from its objective text.
+  - 97411/97412/97414 are Horde Paladin quests and 97447-97450 are Alliance Shaman quests, so Forever has cross-faction Paladins and Shamans.
+
 ## What we can't fix yet, and why
 
 - Riverglades: no QuestieTrace data. QuestieTrace keeps only 10 sessions per character and they had

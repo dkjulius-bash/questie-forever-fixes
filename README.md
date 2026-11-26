@@ -182,13 +182,27 @@ Only differences from the installed DB are kept:
 - Spawns: new zones are added. Existing spawns are replaced only when every Questie point is more than 3
   map units from the observed/Wowhead points; otherwise only extra points more than 3.0 units from every
   DB point are appended.
-- Prerequisites and races are never touched or inferred.
+- Prerequisites and races of existing QuestieDB quests are never touched or inferred.
 - Wowhead coordinates are never used on redrawn maps 44, 139, 215 and 1519 (they return stale Era-frame
   points), and a trace patch wins over Wowhead for the same uiMap group.
-- Wowhead network policy: tooltip API only (`nether.wowhead.com/tooltip/...?dataEnv=16`), plus wago.tools
-  DB2 CSVs; single-threaded, at most 3 requests/s, never www.wowhead.com pages.
+- Wowhead network policy: `refresh.py` uses the tooltip API only (`nether.wowhead.com/tooltip/...?dataEnv=16`),
+  plus wago.tools DB2 CSVs; single-threaded, at most 3 requests/s, never www.wowhead.com pages.
 
-`Data.lua` rows carry a `-- src: trace|wh-tooltip|trace+wh-tooltip` comment.
+Curated layers, checked in under `data/` and applied by `refresh.py` after the trace and Wowhead steps:
+
+- `added_quests.json`: quests QuestieDB lacks, curated once from Wowhead Forever quest pages
+  (`tools/wh_quest_page.js` in a browser, then `missing_build.py` and `added_quests_build.py`). Each entry carries
+  its provenance; manual edits go in `overrides`. A quest QuestieDB has since added is retired automatically.
+  Givers get `questStarts_add`/`questEnds_add`, and starter items get `startQuest`. Giver ids are never guessed:
+  quests without a giver on Wowhead ship without one.
+- `class_restrictions.json`: requiredClasses for the Forever Tier 0.5 quests, derived from the objective items'
+  item set (DB2 ItemSet, `class_restrictions.py`). It is applied only where QuestieDB has no requiredClasses.
+- `gap_fills.json`: entities QuestieDB has no spawns for (all-zones audit, `gap_fill_select.py`; Scourge
+  Invasion mobs and redrawn maps excluded). Each ships through the Wowhead tooltip rules only while QuestieDB
+  still has no spawns. Instance points become QuestieDB's `{-1, -1}` sentinel.
+
+`Data.lua` rows carry a `-- src:` comment naming their sources, joined by `+`: `trace`, `wh-tooltip`, `wh-page`
+(added quests) and `class-map` (class restrictions).
 
 ### Release steps
 
@@ -197,7 +211,8 @@ See [docs/RELEASING.md](docs/RELEASING.md). Releases are built and uploaded by t
 ## Credits
 
 Questie, QuestieDB and QuestieTrace and their teams (all GPLv3). Some coordinates come from Wowhead Forever
-tooltips. ForeverDungeonJournal is used read-only for the dungeon audit.
+tooltips, and the added quests come from Wowhead Forever quest pages. ForeverDungeonJournal is used read-only
+for the dungeon audit.
 
 ## License
 

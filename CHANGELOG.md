@@ -1,5 +1,14 @@
 # Changelog
 
+## Unreleased (proposed 0.3.0)
+
+- Adds 22 quests that QuestieDB lacks (11 Alliance, 9 Horde, 2 neutral). They include the missing Tier 0.5 "Saving the Best for Last" and "Anthion's Parting Words" variants for both factions, "A Broken Ritual", "The Light and How To Swing It", "A More Fitting Reward", the Orgrimmar and Ironforge "A Quick Craft" chain, "Secret of the Barrow Deeps", "The Broken Glaive" and two "An Epic Ride" variants. 7 of them have no known quest giver yet. They ship without one, so Questie tracks their objectives once the quest is in your log but shows no "!" for them.
+- Quest givers learn the new quests, and 3 new quest-starting items get their quest link. 3 objective items that QuestieDB lacks get a name.
+- Class restrictions for WoW Forever's re-issued Tier 0.5 quests ("An Earnest Proposition", "Just Compensation", "Anthion's Parting Words", "Saving the Best for Last"). QuestieDB has no class on most of them, so Questie offered every class's version of each quest; 70 quests are now limited to their class. The class comes from the set the quest's items belong to (client ItemSet table). A class that QuestieDB already sets is never changed.
+- Spawn points for 27 quest NPCs and objects that QuestieDB has no location for, taken from Wowhead Forever. They include the Alliance Strongboxes (Barrens, Alterac Mountains), the Obsidian Chunks in Silithus, the Ashenvale demon lords, Plaguewing Vultures and Darkfang Lurkers. Scourge Invasion event mobs are left out.
+- Data regenerated from 45 recorded sessions.
+- Maintainer tooling: an all-zones, both-factions location audit (`tools/zone_audit.py --all-zones`) and curated data files in `data/` (`added_quests.json`, `class_restrictions.json`, `gap_fills.json`) with their builder scripts. `refresh.py` checks every curated row against the installed QuestieDB, so rows retire as Questie catches up.
+
 ## 0.2.0 – 2026-11-26
 
 - Data regenerated from 41 recorded sessions (was 39): 1 quest, 49 NPC, 11 object and 80 item corrections (was 1 / 44 / 9 / 74).

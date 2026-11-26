@@ -301,7 +301,12 @@ def scenario_f(data):
         check(f"{p.name}: compiles", fn is not None, str(err))
 
 
-SRC_RE = re.compile(r"-- src: (trace\+wh-tooltip|trace|wh-tooltip)\s*$")
+SRC_TAGS = ("trace", "wh-tooltip", "wh-page", "class-map")
+SRC_RE = re.compile(r"-- src: ([a-z-]+(?:\+[a-z-]+)*)\s*$")
+
+
+def _src_ok(m):
+    return m is not None and all(t in SRC_TAGS for t in m.group(1).split("+"))
 ROW_RE = re.compile(r"^\s+\[\d+\] = \{")
 
 
@@ -312,7 +317,7 @@ def _num(v):
 def scenario_g(data):
     print("[g] row source comments")
     lines = [l for l in Path(data).read_text(encoding="utf-8").splitlines() if ROW_RE.match(l)]
-    bad = [l[:80] for l in lines if not SRC_RE.search(l)]
+    bad = [l[:80] for l in lines if not _src_ok(SRC_RE.search(l))]
     check("every row line carries a -- src comment (%d rows)" % len(lines), lines and not bad, str(bad[:3]))
 
 
@@ -355,16 +360,16 @@ def scenario_h(data):
 def scenario_i(data):
     print("[i] meta.sources vs comments")
     text = Path(data).read_text(encoding="utf-8")
-    cnt = {"trace": 0, "wh-tooltip": 0, "trace+wh-tooltip": 0}
+    cnt = {}
     for l in text.splitlines():
         if ROW_RE.match(l):
             m = SRC_RE.search(l)
-            if m: cnt[m.group(1)] += 1
+            if _src_ok(m): cnt[m.group(1)] = cnt.get(m.group(1), 0) + 1
     s = Scenario(data)
     src = s.ns.meta.sources
     check("meta.sources present", src is not None)
     if src is not None:
-        got = {"trace": src.trace, "wh-tooltip": src.wh, "trace+wh-tooltip": src.both}
+        got = {str(k): v for k, v in src.items()}
         check("meta.sources == comment counts", got == cnt, "%s vs %s" % (got, cnt))
 
 
@@ -411,6 +416,126 @@ def scenario_j(data, local_path):
     check("applied counts == union of shipped and local ids", s.applied() == expect, f"{s.applied()} vs {expect}")
 
 
+NEWQUEST_FIXTURE = ROOT / "tools" / "fixtures" / "DataNewQuest.lua"
+QDB_SRC = META_DIR.parent
+K_FILES = ["meta/questMeta.lua", "meta/normalize.lua", "corrections/tablePatch.lua",
+           "corrections/registry.lua", "read/shared.lua"]
+
+K_SETUP = r"""
+function(L)
+  local base = {
+    [84195] = { [1] = "Saving the Best for Last", [6] = 4294967373, [10] = { nil, nil, { { 16720 }, { 16706 } } } },
+    [9001] = { [1] = "Other Class Quest", [7] = 128 },
+  }
+  local list, map = { 9001, 84195 }, { [9001] = true, [84195] = true }
+  local backend = {
+    hasScalarRows = false,
+    getAllIds = function() return list, map end,
+    readField = function(id, idx) local r = base[id]; return r and r[idx] end,
+  }
+  L.Quest = L.shared.CreateEntity(L.Meta.Quest, backend)
+  L.RequireContract = function(n) return true end
+  L.contractVersion = 4
+  L.minSupportedContract = 1
+  local keys = {}
+  for name, idx in pairs(L.Meta.Quest.keys) do
+    keys[name] = idx; keys[name .. "_add"] = idx + 1000; keys[name .. "_remove"] = idx - 1000
+  end
+  L.Enum = { questKeys = keys, npcKeys = {}, objectKeys = {}, itemKeys = {} }
+  L.RegisterRuntimeCorrection = L.Corrections.RegisterRuntimeCorrection
+  L.ApplyRegisteredCorrections = L.Corrections.ApplyRegisteredCorrections
+  LibQuestieDB = L
+  __out, __frames = {}, {}
+  DEFAULT_CHAT_FRAME = { AddMessage = function(_, s) __out[#__out + 1] = s end }
+  SlashCmdList = {}
+  C_AddOns = { GetAddOnMetadata = function(a, k) if a == "QuestieDB" and k == "Version" then return "1.1.5" end end }
+  function CreateFrame()
+    local f = { events = {} }
+    function f:RegisterEvent(e) self.events[e] = true end
+    function f:UnregisterEvent(e) self.events[e] = nil end
+    function f:SetScript(n, fn) if n == "OnEvent" then self.onevent = fn end end
+    __frames[#__frames + 1] = f
+    return f
+  end
+end
+"""
+
+K_LOADER = """
+function(name, src, lib)
+  local fn = assert(loadstring(src, "@" .. name))
+  return fn("QuestieDB", lib)
+end
+"""
+
+K_LIB = """{
+  config = { entityTypes = {{name="Quest"}}, expansionOrder = { Classic = 1, Forever = 1 } },
+  flavor = { expansion = "Forever", rules = "Classic", name = "Forever" },
+}"""
+
+K_READ = """
+R = {}
+local Q = LibQuestieDB.Quest
+R.e1, R.e2 = Q.Exists(84197), Q.Exists(82081)
+R.all = Q.GetAllIds(true)[84197]
+R.name = Q.Get(84197, "name")
+R.rc = Q.Get(84197, "requiredClasses")
+local ob = Q.Get(84197, "objectives")
+R.ob = ob and ob[3] and ob[3][1] and ob[3][1][1]
+local sb = Q.Get(84197, "startedBy")
+R.sb = sb and sb[1] and sb[1][1]
+local sb2 = Q.Get(82081, "startedBy")
+R.sb2 = sb2 and sb2[3] and sb2[3][1]
+R.rc2 = Q.Get(84195, "requiredClasses")
+R.name2 = Q.Get(84195, "name")
+local ob2 = Q.Get(84195, "objectives")
+R.ob2 = ob2 and ob2[3] and ob2[3][2] and ob2[3][2][1]
+R.rc3 = Q.Get(9001, "requiredClasses")
+"""
+
+
+def scenario_k(_data):
+    print("[k] new quest + class override through the real QuestieDB registry")
+    lua = lua51.LuaRuntime(unpack_returned_tuples=False)
+    loader = lua.eval(K_LOADER)
+    lib = lua.eval(K_LIB)
+    for f in K_FILES:
+        loader(f, (QDB_SRC / f).read_text(encoding="utf-8"), lib)
+    lua.eval(K_SETUP)(lib)
+    ns = lua.table()
+    for name, path in (("Data.lua", NEWQUEST_FIXTURE), ("Core.lua", ADDON / "Core.lua")):
+        fn = lua.eval("loadstring")(path.read_text(encoding="utf-8"), "@" + name)
+        if fn is None:
+            raise RuntimeError("compile error in " + name)
+        fn(ADDON_NAME, ns)
+    g = lua.globals()
+    for i in range(1, len(g.__frames) + 1):
+        f = g.__frames[i]
+        if f.events["ADDON_LOADED"] and f.onevent:
+            f.onevent(f, "ADDON_LOADED", ADDON_NAME)
+
+    def out():
+        return [str(g.__out[i]) for i in range(1, len(g.__out) + 1)]
+
+    check("no chat lines printed at load", out() == [], str(out()))
+    lua.execute(K_READ)
+    R = g.R
+    check("Quest.Exists(84197) and (82081)", R["e1"] is True and R["e2"] is True)
+    check("GetAllIds(true)[84197]", R["all"] is True)
+    check("Get name", R["name"] == "Saving the Best for Last", str(R["name"]))
+    check("Get requiredClasses == 128", R["rc"] == 128, str(R["rc"]))
+    check("objectives[3][1][1] == 16686", R["ob"] == 16686, str(R["ob"]))
+    check("startedBy[1][1] == 230319", R["sb"] == 230319, str(R["sb"]))
+    check("item-started quest startedBy[3][1] == 221346", R["sb2"] == 221346, str(R["sb2"]))
+    check("84195 requiredClasses == 1024", R["rc2"] == 1024, str(R["rc2"]))
+    check("84195 base name kept", R["name2"] == "Saving the Best for Last", str(R["name2"]))
+    check("84195 base objectives still readable", R["ob2"] == 16706, str(R["ob2"]))
+    check("9001 requiredClasses unchanged (128)", R["rc3"] == 128, str(R["rc3"]))
+    before = len(out())
+    g.SlashCmdList.QUESTIEFOREVERFIXES("")
+    txt = "\n".join(out()[before:])
+    check("/qff shows Quest 3", "Quest 3" in txt, txt)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data")
@@ -429,6 +554,10 @@ def main():
             fn(data)
         except Exception as e:
             check(f"{fn.__name__} raised", False, repr(e))
+    try:
+        scenario_k(data)
+    except Exception as e:
+        check("scenario_k raised", False, repr(e))
     try:
         scenario_j(data, a.local_data)
     except Exception as e:

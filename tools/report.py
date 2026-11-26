@@ -45,7 +45,7 @@ def rg_quests(db):
     return by_zone, by_spawn
 
 
-def build_report(patch, reasons, extracted, db, meta, sources=None):
+def build_report(patch, reasons, extracted, db, meta, sources=None, extras=None):
     L = []
     P = L.append
     P("QuestieForeverFixes patch report")
@@ -69,14 +69,22 @@ def build_report(patch, reasons, extracted, db, meta, sources=None):
         P("Patch rows by source")
         for kind in ("Quest", "Npc", "Object", "Item"):
             c = Counter(sources[kind].values())
-            P("  %-7s trace=%-5d wh-tooltip=%-5d trace+wh-tooltip=%d" % (
-                kind, c["trace"], c["wh-tooltip"], c["trace+wh-tooltip"]))
-        whr = Counter((k, f, r) for k, _, f, r in reasons if r.startswith("wh-"))
-        P("  wh-tooltip reasons per field:")
+            P("  %-7s %s" % (kind, "   ".join("%s=%d" % (s, c[s]) for s in sorted(c)) or "(none)"))
+        whr = Counter((k, f, r) for k, _, f, r in reasons
+                      if r.startswith("wh-") or r in ("new-quest", "new-quest-giver", "new-quest-item", "class-restriction"))
+        P("  curated/wh reasons per field:")
         for (k, f, r), n in sorted(whr.items()):
-            P("    %-7s %-10s %-16s %d" % (k, f, r, n))
+            P("    %-7s %-18s %-16s %d" % (k, f, r, n))
         if not whr:
             P("    (none)")
+        P("")
+
+    for title, lines in (extras or {}).items():
+        P(title)
+        for ln in lines:
+            P("  " + ln)
+        if not lines:
+            P("  (none)")
         P("")
 
     # ---- Riverglades

@@ -428,6 +428,66 @@ def wh_patch(db, zones, wh, trace_patch, extra_entities=None, coll=None, zones_m
     return rows, reasons, info
 
 
+# ------------------------------------------------------------------ gap fills
+def _instance_points(pts):
+    """Wowhead returns (0, 0) for instance maps: all-(0,0) -> QuestieDB's [[-1, -1]] sentinel, else drop the (0,0) points."""
+    pts = [list(p) for p in pts]
+    zero = [p for p in pts if p[0] == 0 and p[1] == 0]
+    if not zero:
+        return pts
+    if len(zero) == len(pts):
+        return [[-1, -1]]
+    return [p for p in pts if not (p[0] == 0 and p[1] == 0)]
+
+
+def gap_fill_patch(db, wh, trace_patch, entities):
+    """Spawn rows for curated gap-fill entities (QuestieDB has the entity but no spawns, Wowhead has coords).
+
+    -> (rows {"Npc": {}, "Object": {}}, reasons, log lines).
+    """
+    rows = {"Npc": {}, "Object": {}}
+    log = []
+    eligible = []
+    names = {}
+    for kind, eid in entities:
+        res = check_entity(db, wh, Z._TRANSFORMS, kind, eid)
+        names[(kind, eid)] = res["name"]
+        if res["status"] != "questie-no-spawns":
+            log.append("retired %s %d %s: status %s" % (kind, eid, res["name"], res["status"]))
+            continue
+        eligible.append((kind, eid))
+    if not eligible:
+        return rows, [], log
+    wrows, wreasons, info = wh_patch(db, None, wh, trace_patch, extra_entities=eligible, coll={}, zones_main={})
+    kept = set()
+    for kind, eid in eligible:
+        inf = info.get((kind, eid))
+        row = wrows[kind].get(eid)
+        if row is None:
+            log.append("skip %s %d %s: wh rules (redrawn map, no uiMap, or a trace/earlier patch wins)" % (kind, eid, names[(kind, eid)]))
+            continue
+        if inf["reason"] != "wh-add-zone":
+            log.append("skip %s %d %s: %s" % (kind, eid, names[(kind, eid)], inf["reason"]))
+            continue
+        sp = {}
+        for z, pts in row["spawns"].items():
+            fixed = _instance_points(pts)
+            if fixed:
+                sp[z] = fixed
+        row = dict(row)
+        row["spawns"] = sp
+        rows[kind][eid] = row
+        kept.add((kind, eid))
+        log.append("fill %s %d %s: %s" % (kind, eid, names[(kind, eid)], ", ".join(
+            "zone %s %s" % (z, "instance" if pts == [[-1, -1]] else "%d points" % len(pts)) for z, pts in sorted(sp.items()))))
+    reasons = []
+    for kind, eid, f, r in wreasons:
+        if (kind, eid) not in kept:
+            continue
+        reasons.append((kind, eid, f, "wh-gap-fill" if (f == "spawns" and r == "wh-add-zone") else r))
+    return rows, reasons, log
+
+
 # ------------------------------------------------------------------ summary
 def _fmt_pts(pts, n=4):
     s = ", ".join("(%.1f,%.1f)" % (p[0], p[1]) for p in pts[:n])

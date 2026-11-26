@@ -137,7 +137,7 @@ def build_patch(extracted, db):
                     reasons.append((kind, eid, f, "new-entity"))
             else:
                 _existing(kind, eid, row, dbrow, extracted, out, reasons)
-            out = _validate(kind, eid, out, db, reasons)
+            out = validate_row(kind, eid, out, db, reasons)
             if out:
                 patch[kind][eid] = out
     # reasons for dropped rows/fields are filtered to what survives (invalid-dropped kept)
@@ -218,7 +218,8 @@ def _objectives(eid, v, dbrow, emit):
     emit("objectives", new, "objectives-replaced")
 
 
-def _validate(kind, eid, out, db, reasons):
+def validate_row(kind, eid, out, db, reasons):
+    """Drop fields whose type does not match the DB field type; logs (kind, eid, field, 'invalid-dropped')."""
     res = {}
     for f, v in out.items():
         base = _base(f)
@@ -237,3 +238,6 @@ def _validate(kind, eid, out, db, reasons):
         else:
             reasons.append((kind, eid, f, "invalid-dropped"))
     return res
+
+
+_validate = validate_row
